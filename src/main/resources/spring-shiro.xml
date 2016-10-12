@@ -30,7 +30,7 @@
         <property name="securityManager" ref="securityManager" />  
         <!-- 没有权限或者失败后跳转的页面 -->  
         <property name="loginUrl" value="/login" />  
-        <property name="successUrl" value="/success" />  
+        <property name="successUrl" value="/home" />  
         <property name="unauthorizedUrl" value="" /> 
         <property name="filters">
             <map>
