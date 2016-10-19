@@ -33,10 +33,14 @@ public class ShiroFormAuthenticationFilter extends FormAuthenticationFilter {
 		String className = e.getClass().getName(), message = "";
 		
 		System.out.println("login failed: "+ className);
-		if (IncorrectCredentialsException.class.getName().equals(className)
-				|| UnknownAccountException.class.getName().equals(className)){
+		
+		
+		
+		if (IncorrectCredentialsException.class.getName().equals(className) ){
 			message = "用户或密码错误, 请重试.";
-		}	else{
+		} else if(UnknownAccountException.class.getName().equals(className)) {
+			message = "用户名不存在, 请重试.";
+		} else{
 			message = "系统出现点问题，请稍后再试！";
 		}
 		

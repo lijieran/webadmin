@@ -31,18 +31,12 @@
 	<link rel="stylesheet" href="${ctxStatic}/common/theme/fonts/font-awesome/css/font-awesome.min.css">
 	<!--[if IE 7]><link rel="stylesheet" href="${ctxStatic}/common/theme/fonts/font-awesome/css/font-awesome-ie7.min.css"><![endif]-->
 	
-	<!-- Uniform Pretty Checkboxes -->
-	<link href="${ctxStatic}/common/theme/scripts/plugins/forms/pixelmatrix-uniform/css/uniform.default.css" rel="stylesheet" />
-	
-	<!-- PrettyPhoto -->
-    <link href="${ctxStatic}/common/theme/scripts/plugins/gallery/prettyphoto/css/prettyPhoto.css" rel="stylesheet" />
+
 	
 	<!-- Main Theme Stylesheet :: CSS -->
 	<link href="${ctxStatic}/common/theme/css/style-default.css?1371698489" rel="stylesheet" type="text/css" />
 	
 	
-	<!-- LESS.js Library -->
-	<script src="${ctxStatic}/common/theme/scripts/plugins/system/less.min.js"></script>
 </head>
 <body class="login ">
 	
@@ -73,7 +67,6 @@
 						<div class="separator bottom"></div> 
 						<div class="row-fluid">
 							<div class="span8">
-								<div class="uniformjs"><label class="checkbox"><input type="checkbox" value="rememberMe ">下次不需要再登录</label></div>
 							</div>
 							<div class="span4 center">
 								<button class="btn btn-block btn-inverse" type="submit">登 录</button>
@@ -107,41 +100,17 @@
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	
-	<!-- Code Beautify -->
-	<script src="${ctxStatic}/common/theme/scripts/plugins/other/js-beautify/beautify.js"></script>
-	<script src="${ctxStatic}/common/theme/scripts/plugins/other/js-beautify/beautify-html.js"></script>
+
 	
-	<!-- PrettyPhoto -->
-	<script src="${ctxStatic}/common/theme/scripts/plugins/gallery/prettyphoto/js/jquery.prettyPhoto.js"></script>
-	
-	<!-- Global -->
-	<script>
-	var basePath = '',
-		commonPath = 'common/';
-	</script>
-	
-	
-	<!-- Modernizr -->
-	<script src="${ctxStatic}/common/theme/scripts/plugins/system/modernizr.js"></script>
+
 	
 	<!-- Bootstrap -->
 	<script src="${ctxStatic}/common/bootstrap/js/bootstrap.min.js"></script>
 	
-	<!-- SlimScroll Plugin -->
-	<script src="${ctxStatic}/common/theme/scripts/plugins/other/jquery-slimScroll/jquery.slimscroll.min.js"></script>
 	
-	<!-- Common Demo Script -->
-	<script src="${ctxStatic}/common/theme/scripts/demo/common.js?1371698489"></script>
+
 	
-	<!-- Holder Plugin -->
-	<script src="${ctxStatic}/common/theme/scripts/plugins/other/holder/holder.js"></script>
-	<script>
-		Holder.add_theme("dark", {background:"#000", foreground:"#aaa", size:9});
-		Holder.add_theme("white", {background:"#fff", foreground:"#c9c9c9", size:9});
-	</script>
-	
-	<!-- Uniform Forms Plugin -->
-	<script src="${ctxStatic}/common/theme/scripts/plugins/forms/pixelmatrix-uniform/jquery.uniform.min.js"></script>
+
 
 	
 	
