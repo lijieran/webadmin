@@ -3,15 +3,30 @@ package com.liyang.webadmin.shiro;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 
 
 public class ShiroFormAuthenticationFilter extends FormAuthenticationFilter {
+	
+	
+
+	@Override
+	protected AuthenticationToken createToken(ServletRequest request,
+			ServletResponse response) {
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String mac = DigestUtils.md5Hex(password);
+		return new UsernamePasswordToken(username,mac);
+	}
+
+
 
 	protected boolean onLoginSuccess(AuthenticationToken token,
 			Subject subject, ServletRequest request, ServletResponse response)
@@ -22,6 +37,8 @@ public class ShiroFormAuthenticationFilter extends FormAuthenticationFilter {
 		System.out.println("login success");
 		return false;
 	}
+	
+	
 
 	protected boolean onLoginFailure(AuthenticationToken token,
 			AuthenticationException e, ServletRequest request,
