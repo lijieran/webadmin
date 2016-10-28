@@ -2,6 +2,7 @@ package com.liyang.webadmin.shiro;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -17,6 +18,8 @@ import com.liyang.webadmin.service.AuthenticationService;
 
 
 public class ShiroRealm extends AuthorizingRealm{
+	
+	private static Logger logger = Logger.getLogger(ShiroRealm.class);
 	
 	@Resource
 	private AuthenticationService authenticationService;
@@ -44,19 +47,23 @@ public class ShiroRealm extends AuthorizingRealm{
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken authcToken) throws AuthenticationException {
 
-		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-		
-		String username = token.getUsername();
-		
-		User user = authenticationService.findByUsername(username);
-		
-		if(user!=null) {
-			System.out.println("==="+user.getUsername());
-			return new SimpleAuthenticationInfo(username, user.getPassword(), getName());
+		try {
+			UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
+			
+			String username = token.getUsername();
+			
+			User user = authenticationService.findByUsername(username);
+			
+			if(user!=null) {
+				System.out.println("==="+user.getUsername());
+				return new SimpleAuthenticationInfo(username, user.getPassword(), getName());
+			}
+			
+			System.out.println(token.getUsername());
+			System.out.println(token.getPassword());
+		} catch (Exception e) {
+			logger.error(e,e);
 		}
-		
-		System.out.println(token.getUsername());
-		System.out.println(token.getPassword());
 		return null;
 	}
 

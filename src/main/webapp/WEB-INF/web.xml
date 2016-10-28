@@ -6,6 +6,9 @@
 
 	<display-name>shirooa</display-name>
 
+    <welcome-file-list>
+         <welcome-file>home</welcome-file>
+    </welcome-file-list>
 
 	
 	<!-- Context ConfigLocation -->
