@@ -8,7 +8,7 @@
 <!--[if gt IE 8]> <html class="ie gt-ie8 fluid sticky-top sticky-sidebar sidebar"> <![endif]-->
 <!--[if !IE]><!--><html class="fluid sticky-top sticky-sidebar sidebar"><!-- <![endif]-->
 <head>
-	<title>后台管理系统</title>
+	<title>用户列表-后台管理系统</title>
 	
     <%@ include file="/WEB-INF/page/include/meta.jsp"%>
 
@@ -17,7 +17,7 @@
 <body class="">
 	
 		<!-- Main Container Fluid -->
-	<div class="container-fluid fluid menu-left">
+	     <div class="container-fluid fluid menu-left">
 		
 				<!-- Sidebar menu & content wrapper -->
 		<div id="wrapper">
@@ -36,12 +36,12 @@
 				
 			<ul class="breadcrumb">
 				<li>You are here</li>
-				<li><a href="index.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-default" class="glyphicons dashboard"><i></i> Quick Admin</a></li>
+				<li><a href="${ctx }/" class="glyphicons dashboard"><i></i> 后台管理系统</a></li>
 				<li class="divider"></li>
-				<li>Dashboard</li>
+				<li>我的面板</li>
 				<li class="pull-right hidden-phone"><a href="" class="glyphicons shield">帮助<i></i></a></li>
 				<li class="pull-right hidden-phone divider"></li>
-				<li class="pull-right hidden-phone"><a href="" class="glyphicons adjust_alt">Filter<i></i></a></li>
+				<li class="pull-right hidden-phone"><a href="${ctx }/user/userAdd" class="glyphicons adjust_alt">用户添加<i></i></a></li>
 			</ul>
 
 
@@ -82,6 +82,7 @@
 
 	
   <%@ include file="/WEB-INF/page/include/script.jsp"%>
+  	
 	
 	<script type="text/javascript">
 	function queryParams() {

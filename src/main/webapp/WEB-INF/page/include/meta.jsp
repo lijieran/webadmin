@@ -23,3 +23,6 @@
 	
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="${ctxStatic}/common/bootstrap-table-master/bootstrap-table.min.css">
+	
+	<!-- Uniform Pretty Checkboxes -->
+	<link href="${ctxStatic}/common/theme/scripts/plugins/forms/pixelmatrix-uniform/css/uniform.default.css" rel="stylesheet" />

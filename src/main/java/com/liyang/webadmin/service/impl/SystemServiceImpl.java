@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
@@ -22,6 +23,18 @@ public class SystemServiceImpl implements SystemService{
         Gson gson = new Gson();
         String json = gson.toJson(users);
 		return json;
+	}
+
+	public boolean checkLoginName(String username) {
+		User user = userMapper.findByUsername(username);
+		if(user!=null) return false;
+		return true;
+	}
+
+	public void save(User user) {
+		user.setPassword(DigestUtils.md5Hex(user.getPassword()));
+		userMapper.save(user);
+		
 	}
 
 }

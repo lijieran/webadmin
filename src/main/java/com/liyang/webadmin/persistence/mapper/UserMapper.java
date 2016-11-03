@@ -9,5 +9,7 @@ public interface UserMapper {
 	User findByUsername(String username);
 	
 	List<User> findUsers();
+	
+	void save(User user);
 
 }

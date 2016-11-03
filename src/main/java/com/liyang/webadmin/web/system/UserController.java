@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.liyang.webadmin.entity.User;
 import com.liyang.webadmin.service.SystemService;
 
 
@@ -41,6 +43,38 @@ public class UserController {
 		String res = systemService.findUsers();
 		return res;
 	}
+	
+	
+	@RequestMapping(value = {"userAdd"})
+	public String userAdd() {
+		return "system/userAdd";
+	}
+	
+	@RequestMapping(value = {"save"})
+	public String save(User user) {
+		
+		logger.info("用户信息：" + user.getUsername());
+	    systemService.save(user);
+		
+		return "redirect:"  + "/user/index";
+	}
+	
+	/**
+	 * 验证登录名是否有效
+	 * @param oldLoginName
+	 * @param loginName
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "checkLoginName")
+	public String checkLoginName(String username) {
+		logger.info("用户名："+username);
+		if (username !=null && !systemService.checkLoginName(username)) {
+			return "false";
+		} 
+		return "true";
+	}
+
 	
 	
 

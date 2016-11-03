@@ -11,27 +11,7 @@
 	<title>后台管理系统</title>
 	
 	<!-- Meta -->
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
-	
-	<!-- Bootstrap -->
-	<link href="${ctxStatic}/common/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-	<link href="${ctxStatic}/common/bootstrap/css/responsive.css" rel="stylesheet" type="text/css" />
-	
-	<!-- Glyphicons Font Icons -->
-	<link href="${ctxStatic}/common/theme/fonts/glyphicons/css/glyphicons.css" rel="stylesheet" />
-	
-	<link rel="stylesheet" href="${ctxStatic}/common/theme/fonts/font-awesome/css/font-awesome.min.css">
-	<!--[if IE 7]><link rel="stylesheet" href="${ctxStatic}/common/theme/fonts/font-awesome/css/font-awesome-ie7.min.css"><![endif]-->
-	
-	
-
-	
-	<!-- Main Theme Stylesheet :: CSS -->
-	<link href="${ctxStatic}/common/theme/css/style-default.css?1371698479" rel="stylesheet" type="text/css" />
+	 <%@ include file="/WEB-INF/page/include/meta.jsp"%>
 	
 
 </head>
@@ -58,7 +38,7 @@
 				
 	<ul class="breadcrumb">
 		<li>You are here</li>
-		<li><a href="index.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-default" class="glyphicons dashboard"><i></i> Quick Admin</a></li>
+		<li><a href="${ctx }/" class="glyphicons dashboard"><i></i> Quick Admin</a></li>
 		<li class="divider"></li>
 		<li>Dashboard</li>
 		<li class="pull-right hidden-phone"><a href="" class="glyphicons shield">Get Help<i></i></a></li>

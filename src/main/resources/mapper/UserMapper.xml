@@ -18,6 +18,12 @@
 			*
 		FROM t_user a
 	</select>
+	
+	
+	<!-- 保存用户 -->
+	<insert id="save">
+	    insert into t_user (id, name, username, password) values(#{id}, #{name}, #{username}, #{password} )
+	</insert>
 
 	
 </mapper>
