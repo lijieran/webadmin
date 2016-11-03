@@ -11,6 +11,13 @@
 		
 		WHERE a.username = #{0}
 	</select>
+	
+	<!-- 查询所有用户 -->
+	<select id="findUsers" resultType="user" >
+		SELECT
+			*
+		FROM t_user a
+	</select>
 
 	
 </mapper>

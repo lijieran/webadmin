@@ -12,9 +12,11 @@
 	<script src="${ctxStatic}/common/theme/scripts/plugins/system/modernizr.js"></script>
 	<!-- Bootstrap -->
 	<script src="${ctxStatic}/common/bootstrap/js/bootstrap.min.js"></script>
+	<script src="${ctxStatic}/common/bootstrap-table-master/bootstrap-table.min.js"></script>
 	
 	<!-- SlimScroll Plugin -->
 	<script src="${ctxStatic}/common/theme/scripts/plugins/other/jquery-slimScroll/jquery.slimscroll.min.js"></script>
 	
 	<!-- Common Demo Script -->
 	<script src="${ctxStatic}/common/theme/scripts/demo/common.js?1371698479"></script>
+

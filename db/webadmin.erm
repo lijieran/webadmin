@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2016-09-28 15:49:43</creation_date>
-			<updated_date>2016-11-03 10:30:36</updated_date>
+			<updated_date>2016-11-03 10:28:29</updated_date>
 			<model_property>
 				<name>Project Name</name>
 				<value></value>
@@ -158,7 +158,7 @@
 			</model_property>
 		</model_properties>
 		<table_properties>
-			<schema>webadmin</schema>
+			<schema></schema>
 			<character_set>utf8</character_set>
 			<collation></collation>
 			<storage_engine>InnoDB</storage_engine>
