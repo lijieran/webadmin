@@ -51,10 +51,18 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = {"save"})
-	public String save(User user) {
+	public String save(User user, Model model) {
 		
 		logger.info("用户信息：" + user.getUsername());
+		
+		 if(user.getId()==null || user.getName()==null || user.getPassword()==null) {
+			 model.addAttribute("error", "非法请求");
+			 return "system/userAdd";
+		 }
+		
 	    systemService.save(user);
+	    
+	   
 		
 		return "redirect:"  + "/user/index";
 	}

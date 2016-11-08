@@ -17,4 +17,10 @@ public class MenuController {
 	}
 	
 
+	@RequestMapping(value = {"menuAdd"})
+	public String userAdd() {
+		return "system/menuAdd";
+	}
+	
+
 }

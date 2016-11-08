@@ -46,11 +46,19 @@
 
 
               <div>
+              
+              <div id="toolbar" class="btn-group">
+			    <button type="button" class="btn btn-default">
+			       用户添加
+			    </button>
+			</div>
+              
                    <table data-toggle="table"
 					       data-url="http://localhost:8080/webadmin/user/list"
 					       data-query-params="queryParams"
 					       data-pagination="true"
 					       data-search="false"
+					       data-toolbar="#toolbar"
 					       data-height="500">
 					    <thead>
 					    <tr>

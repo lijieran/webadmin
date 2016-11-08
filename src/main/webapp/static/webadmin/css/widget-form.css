@@ -1,0 +1,151 @@
+    body {
+  font-family: 'Open Sans', sans-serif;
+  background: #f0f0f0;
+  font-size: 13px;
+  color: #7c7c7c;
+
+}
+	     .widget {
+  background: #ffffff;
+  margin: 0 auto 15px;
+  position: relative;
+  border: 1px solid #dbdbdb;
+  box-shadow: 0 3px 0 0 #dbdbdb;
+  -moz-box-shadow: 0 3px 0 0 #dbdbdb;
+  -webkit-box-shadow: 0 3px 0 0 #dbdbdb;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.widget.widget-body-gray {
+  box-shadow: 0 3px 0 0 #f6f6f6;
+  -moz-box-shadow: 0 3px 0 0 #f6f6f6;
+  -webkit-box-shadow: 0 3px 0 0 #f6f6f6;
+}
+
+.widget.widget-body-gray > .widget-body {
+  background: #e5e5e5;
+}
+.margin-none {
+    margin: 0 !important;
+}
+.widget .widget-head {
+  background-color: #f9f9f9;
+  background-image: -moz-linear-gradient(top, #fdfdfd, #f4f4f4);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fdfdfd), to(#f4f4f4));
+  background-image: -webkit-linear-gradient(top, #fdfdfd, #f4f4f4);
+  background-image: -o-linear-gradient(top, #fdfdfd, #f4f4f4);
+  background-image: linear-gradient(to bottom, #fdfdfd, #f4f4f4);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffdfdfd', endColorstr='#fff4f4f4', GradientType=0);
+  border-bottom: 1px solid #dbdbdb;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  text-shadow: 0 1px 0 0 1px 0 #ffffff;
+  height: 35px;
+  line-height: 35px;
+  position: relative;
+  padding: 0 15px 0 0;
+  overflow: hidden;
+}
+
+.widget .widget-head .heading {
+  margin: 0;
+  color: #7c7c7c;
+  font-size: 14px;
+  height: 35px;
+  line-height: 35px;
+  padding: 0 15px;
+  float: left;
+}
+
+.widget .widget-body {
+  padding: 15px;
+}
+.widget .widget-body form {
+  margin: 0;
+}
+
+.widget.widget-heading-simple {
+  border: none;
+  background: none;
+}
+.widget.widget-heading-simple > .widget-head {
+  border: none;
+  background: none;
+  padding: 0 0 5px;
+  height: 25px;
+  line-height: 25px;
+}
+.widget.widget-heading-simple > .widget-head .heading {
+  padding: 0;
+  height: 25px;
+  line-height: 25px;
+}
+.widget.widget-heading-simple > .widget-body {
+  border: 1px solid #dbdbdb;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+.widget.widget-body-simple {
+  box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+.widget.widget-body-simple > .widget-body {
+  background: none;
+  border: none;
+  padding: 0;
+}
+.form-actions {
+  background: none;
+  border: none;
+  margin: 0;
+}
+.form-horizontal .form-actions {
+  margin-top: 0;
+  padding: 0;
+}
+.form-horizontal .controls {
+  margin-left: 145px;
+}
+.form-horizontal .control-label {
+  width: 125px;
+}
+.form-horizontal .control-group:last-child {
+  margin: 0;
+}
+label,
+input,
+button,
+select,
+textarea {
+  font-size: 13px;
+}
+.separator {
+  padding: 15px 0;
+  display: block;
+}
+.separator.bottom {
+  padding: 0 0 15px;
+}
+.separator.top {
+  padding: 15px 0 0;
+}
+hr {
+  border-top-color: #dbdbdb;
+  border-bottom: none;
+  margin: 15px 0;
+}
+hr.separator {
+  padding: 0;
+}
+hr.separator.top {
+  margin: 15px 0 0;
+}
+hr.separator.bottom {
+  margin: 0 0 15px;
+}
