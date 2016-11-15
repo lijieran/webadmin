@@ -43,43 +43,35 @@ $(function()
 			
 			id: "required",
 			name: "required",
-			username: {
-				required: true,
-				remote: "http://localhost:8080/webadmin/user/checkLoginName",
-				minlength: 2
+			href: {
+				required: true
 			},
-			password: {
-				required: true,
-				minlength: 5
+			permission: {
+				required: true
 			},
 			confirm_password: {
 				required: true,
 				minlength: 5,
 				equalTo: "#password"
 			},
-			email: {
-				required: true,
-				email: true
-			}
+			sort: "required"
 		},
 		messages: {
 			id: "请输入你的工号",
-			name: "请输入你的用户名",
-			username: {
-				required: "请输入你的用户名",
-				remote: "用户登录名已存在",
-				minlength: "请输入一个长度最少是 2 的字符串"
+			name: "请输入菜单名称",
+			href: {
+				required: "请输入菜单链接"
+			
 			},
-			password: {
-				required: "请提供一个密码",
-				minlength: "请输入一个长度最少是 5 的字符串"
+			permission: {
+				required: "请提供一个权限标识"
 			},
 			confirm_password: {
 				required: "请确认一下密码",
 				minlength: "请输入一个长度最少是 5 的字符串",
 				equalTo: "请输入与上面相同的密码"
 			},
-			email: "请输入正确格式的电子邮件"
+			sort: "请输入菜单排序号"
 		}
 	});
 

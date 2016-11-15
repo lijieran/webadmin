@@ -6,6 +6,6 @@ import com.liyang.webadmin.entity.Menu;
 
 public interface MenuMapper {
 	
-	List<Menu> findMens();
+	List<Menu> findMenus();
 
 }

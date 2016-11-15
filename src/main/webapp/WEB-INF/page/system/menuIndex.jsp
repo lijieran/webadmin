@@ -67,7 +67,7 @@
 								    </button>
 								</div>
 			                   <table data-toggle="table"
-								       data-url="http://localhost:8080/webadmin/user/list"
+								       data-url="http://localhost:8080/webadmin/menu/list"
 								       data-query-params="queryParams"
 								       data-pagination="true"
 								       data-search="false"
@@ -75,10 +75,10 @@
 								       data-height="500">
 								    <thead>
 								    <tr>
-								        <th data-field="id">工号</th>
-								        <th data-field="username">用户名</th>
-								         <th data-field="password">密码</th>
-								        <th data-field="name">真实姓名</th>	       		        
+								        <th data-field="id">菜单ID</th>
+								        <th data-field="name">菜单名称</th>
+								         <th data-field="href">链接</th>
+								        <th data-field="isShow">是否显示</th>	       		        
 								    </tr>
 								    </thead>
 								</table>

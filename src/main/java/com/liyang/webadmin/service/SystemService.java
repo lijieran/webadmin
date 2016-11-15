@@ -9,5 +9,7 @@ public interface SystemService {
 	public boolean checkLoginName(String username);
 	
 	public void save(User user);
+	
+	public String findMenus();
 
 }

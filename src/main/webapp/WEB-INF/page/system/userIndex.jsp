@@ -2,109 +2,106 @@
 <%@ include file="/WEB-INF/page/include/taglib.jsp"%>
 
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="ie lt-ie9 lt-ie8 lt-ie7 fluid sticky-sidebar sidebar"> <![endif]-->
-<!--[if IE 7]>    <html class="ie lt-ie9 lt-ie8 fluid sticky-top sticky-sidebar sidebar"> <![endif]-->
-<!--[if IE 8]>    <html class="ie lt-ie9 fluid sticky-top sticky-sidebar sidebar"> <![endif]-->
-<!--[if gt IE 8]> <html class="ie gt-ie8 fluid sticky-top sticky-sidebar sidebar"> <![endif]-->
-<!--[if !IE]><!--><html class="fluid sticky-top sticky-sidebar sidebar"><!-- <![endif]-->
-<head>
-	<title>用户列表-后台管理系统</title>
-	
-    <%@ include file="/WEB-INF/page/include/meta.jsp"%>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>首页-后台管理系统</title>
 
-</head>
+	    <%@ include file="/WEB-INF/page/include/ace-meta.jsp"%>
 
-<body class="">
-	
-		<!-- Main Container Fluid -->
-	     <div class="container-fluid fluid menu-left">
-		
-				<!-- Sidebar menu & content wrapper -->
-		<div id="wrapper">
-		
-		<!-- Sidebar Menu -->
-		<%@ include file="/WEB-INF/page/include/sidebar.jsp"%>
-		<!-- // Sidebar Menu END -->
-				
-		<!-- Content -->
-		<div id="content">
-		
-		<!-- Top navbar (note: add class "navbar-hidden" to close the navbar by default) -->
-		<%@ include file="/WEB-INF/page/include/topNavbar.jsp"%>
-		<!-- Top navbar END -->
-		
-				
-			<ul class="breadcrumb">
-				<li>You are here</li>
-				<li><a href="${ctx }/" class="glyphicons dashboard"><i></i> 后台管理系统</a></li>
-				<li class="divider"></li>
-				<li>我的面板</li>
-				<li class="pull-right hidden-phone"><a href="" class="glyphicons shield">帮助<i></i></a></li>
-				<li class="pull-right hidden-phone divider"></li>
-				<li class="pull-right hidden-phone"><a href="${ctx }/user/userAdd" class="glyphicons adjust_alt">用户添加<i></i></a></li>
-			</ul>
+	<body>
+		 <%@ include file="/WEB-INF/page/include/ace-topNavbar.jsp"%>
 
+		<div class="main-container container-fluid">
+			<a class="menu-toggler" id="menu-toggler" href="#">
+				<span class="menu-text"></span>
+			</a>
 
-              <div>
-              
-              <div id="toolbar" class="btn-group">
-			    <button type="button" class="btn btn-default">
-			       用户添加
-			    </button>
-			</div>
-              
-                   <table data-toggle="table"
-					       data-url="http://localhost:8080/webadmin/user/list"
-					       data-query-params="queryParams"
-					       data-pagination="true"
-					       data-search="false"
-					       data-toolbar="#toolbar"
-					       data-height="500">
-					    <thead>
-					    <tr>
-					        <th data-field="id">id</th>
-					        <th data-field="username">username</th>
-					         <th data-field="password">password</th>
-					        <th data-field="name">name</th>	       		        
-					    </tr>
-					    </thead>
-					</table>
-              </div>
+	      <%@ include file="/WEB-INF/page/include/ace-sidebar.jsp"%>
+			
+			<div class="main-content">
+				<div class="breadcrumbs" id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li>
+							<i class="icon-home home-icon"></i>
+							<a href="#">首页</a>
 
-	
-		
-		</div>
-		<!-- // Content END -->
-		
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+						</li>
+
+						<li>
+							<a href="#">系统设置</a>
+
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+						</li>
+						<li class="active">用户管理</li>
+					</ul><!--.breadcrumb-->
+
+					<div class="nav-search" id="nav-search">
+						<form class="form-search" />
+						  
+							<span class="input-icon">
+								<input type="text" placeholder="Search ..." class="input-small nav-search-input" id="nav-search-input" autocomplete="off" />
+								<i class="icon-search nav-search-icon"></i>
+								
+							</span>
+						</form>
+						
+						
+					</div><!--#nav-search-->
 				</div>
-		<div class="clearfix"></div>
-		<!-- // Sidebar menu & content wrapper END -->
-				
-		<%@ include file="/WEB-INF/page/include/footer.jsp"%>
-		<!-- // Footer END -->
-		
-	</div>
-	<!-- // Main Container Fluid END -->
-	
 
+				<div class="page-content">
+					<div class="row-fluid">
+						<div class="span12">
+							<!--PAGE CONTENT BEGINS-->
+							
+							  <div>
+							   <div id="toolbar" class="btn-group right">
+								    <button type="button" class="btn btn-primary btn-small "  id="menuAdd-button">
+								     用户添加
+								    </button>
+								</div>
+			                   <table data-toggle="table"
+								       data-url="http://localhost:8080/webadmin/user/list"
+								       data-query-params="queryParams"
+								       data-pagination="true"
+								       data-search="false"
+								       data-toolbar="#toolbar"
+								       data-height="500">
+								    <thead>
+								    <tr>
+								        <th data-field="id">工号</th>
+								        <th data-field="username">用户名</th>
+								         <th data-field="password">密码</th>
+								        <th data-field="name">真实姓名</th>	       		        
+								    </tr>
+								    </thead>
+								</table>
+			              </div>
 
-	
-  <%@ include file="/WEB-INF/page/include/script.jsp"%>
-  	
-	
-	<script type="text/javascript">
-	function queryParams() {
-	    return {
-	        type: 'owner',
-	        sort: 'updated',
-	        direction: 'desc',
-	        per_page: 100,
-	        page: 1
-	    };
-	}
-	</script>
+							<!--PAGE CONTENT ENDS-->
+						</div><!--/.span-->
+					</div><!--/.row-fluid-->
+				</div><!--/.page-content-->
 
-	
+				<%@ include file="/WEB-INF/page/include/ace-settings.jsp"%><!--/#ace-settings-container-->
+			</div><!--/.main-content-->
+		</div><!--/.main-container-->
 
-</body>
+		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
+			<i class="icon-double-angle-up icon-only bigger-110"></i>
+		</a>
+
+	      <%@ include file="/WEB-INF/page/include/ace-script.jsp"%>
+	      <script type="text/javascript">
+			  	$("#menuAdd-button").click(function(){
+					window.location.href = "${ctx}/user/userAdd";
+				});
+	      </script>
+	</body>
 </html>

@@ -1,173 +1,234 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ include file="/WEB-INF/page/include/taglib.jsp"%>
 
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="ie lt-ie9 lt-ie8 lt-ie7 fluid sticky-sidebar sidebar"> <![endif]-->
-<!--[if IE 7]>    <html class="ie lt-ie9 lt-ie8 fluid sticky-top sticky-sidebar sidebar"> <![endif]-->
-<!--[if IE 8]>    <html class="ie lt-ie9 fluid sticky-top sticky-sidebar sidebar"> <![endif]-->
-<!--[if gt IE 8]> <html class="ie gt-ie8 fluid sticky-top sticky-sidebar sidebar"> <![endif]-->
-<!--[if !IE]><!--><html class="fluid sticky-top sticky-sidebar sidebar"><!-- <![endif]-->
+<html>
 <head>
-	<title>用户添加-后台管理系统</title>
+<meta charset="utf-8" />
+<title>菜单添加-后台管理系统</title>
+
+<%@ include file="/WEB-INF/page/include/ace-meta.jsp"%>
+<link rel="stylesheet" href="${ctxStatic}/webadmin/css/widget-form.css" />
+
+	<link rel="stylesheet" type="text/css" href="${ctxStatic}/common/easyui/themes/default/combo.css">
+	<link rel="stylesheet" type="text/css" href="${ctxStatic}/common/easyui/themes/default/combobox.css">
+	<link rel="stylesheet" type="text/css" href="${ctxStatic}/common/easyui/themes/default/tree.css">
+	<link rel="stylesheet" type="text/css" href="${ctxStatic}/common/easyui/themes/default/textbox.css">
+	<link rel="stylesheet" type="text/css" href="${ctxStatic}/common/easyui/themes/default/panel.css">
+	<link rel="stylesheet" type="text/css" href="${ctxStatic}/common/easyui/themes/icon.css">
+	<script type="text/javascript" src="${ctxStatic}/common/easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="${ctxStatic}/common/easyui/jquery.easyui.min.js"></script>
 	
-    <%@ include file="/WEB-INF/page/include/meta.jsp"%>
+<body>
+	<%@ include file="/WEB-INF/page/include/ace-topNavbar.jsp"%>
 
-</head>
+	<div class="main-container container-fluid">
+		<a class="menu-toggler" id="menu-toggler" href="#"> <span
+			class="menu-text"></span>
+		</a>
 
-<body class="">
-	
-		<!-- Main Container Fluid -->
-	<div class="container-fluid fluid menu-left">
-		
-				<!-- Sidebar menu & content wrapper -->
-		<div id="wrapper">
-		
-		<!-- Sidebar Menu -->
-		<%@ include file="/WEB-INF/page/include/sidebar.jsp"%>
-		<!-- // Sidebar Menu END -->
-				
-		<!-- Content -->
-		<div id="content">
-		
-		<!-- Top navbar (note: add class "navbar-hidden" to close the navbar by default) -->
-		<%@ include file="/WEB-INF/page/include/topNavbar.jsp"%>
-		<!-- Top navbar END -->
-		
-	<ul class="breadcrumb">
-				<li>You are here</li>
-				<li><a href="index.html?lang=en&amp;layout_type=fluid&amp;menu_position=menu-left&amp;style=style-default" class="glyphicons dashboard"><i></i> Quick Admin</a></li>
-				<li class="divider"></li>
-				<li>Dashboard</li>
-				<li class="pull-right hidden-phone"><a href="" class="glyphicons shield">帮助<i></i></a></li>
-				<li class="pull-right hidden-phone divider"></li>
-				<li class="pull-right hidden-phone"><a href="${ctx }/user/index" class="glyphicons adjust_alt">用户列表<i></i></a></li>
-			</ul>			
-			
-<div class="innerLR">
+		<%@ include file="/WEB-INF/page/include/ace-sidebar.jsp"%>
 
-	<!-- Form -->
-	<form class="form-horizontal margin-none" id="validateSubmitForm" method="get" autocomplete="off" action="${ctx }/user/save">
-		
-		<!-- Widget -->
-		<div class="widget widget-heading-simple widget-body-gray">
-		
-			<!-- Widget heading -->
-			<div class="widget-head">
-				<h4 class="heading"></h4>
+		<div class="main-content">
+			<div class="breadcrumbs" id="breadcrumbs">
+				<ul class="breadcrumb">
+					<li><i class="icon-home home-icon"></i> <a href="#">首页</a> <span
+						class="divider"> <i class="icon-angle-right arrow-icon"></i>
+					</span></li>
+
+					<li><a href="#">系统设置</a> <span class="divider"> <i
+							class="icon-angle-right arrow-icon"></i>
+					</span></li>
+					<li class="active">用户添加</li>
+				</ul>
+				<!--.breadcrumb-->
+
+				<div class="nav-search" id="nav-search">
+					<form class="form-search" />
+					<span class="input-icon"> <a href="${ctx }/menu/menuAdd">菜单管理</a>
+					</span> <span class="input-icon"> <input type="text"
+						placeholder="Search ..." class="input-small nav-search-input"
+						id="nav-search-input" autocomplete="off" /> <i
+						class="icon-search nav-search-icon"></i>
+
+					</span>
+					</form>
+
+
+				</div>
+				<!--#nav-search-->
 			</div>
-			<!-- // Widget heading END -->
-			
-			<div class="widget-body">
-			
-				<!-- Row -->
+
+			<div class="page-content">
 				<div class="row-fluid">
+					<div class="span12">
+						<!--PAGE CONTENT BEGINS-->
+
+					<!-- 	<div class="alert alert-block alert-success">
+							<button type="button" class="close" data-dismiss="alert">
+								<i class="icon-remove"></i>
+							</button>
+
+							<i class="icon-ok green"></i> Welcome to <strong class="green">
+								Ace <small>(v1.1.2)</small>
+							</strong> , the lightweight, feature-rich and easy to use admin template.
+						</div> -->
+
+						<div class="space-6"></div>
+
+
+						<!-- Form -->
+						<form class="form-horizontal margin-none" id="validateSubmitForm"
+							method="get" autocomplete="off" action="${ctx }/user/save">
+
+							<!-- Widget -->
+							<div class="widget widget-heading-simple widget-body-gray">
+
+								<!-- Widget heading -->
+								<div class="widget-head">
+									<h4 class="heading"></h4>
+								</div>
+								<!-- // Widget heading END -->
+
+								<div class="widget-body">
+
+									<!-- Row -->
+									<div class="row-fluid">
+
+										<!-- Column -->
+										<div class="span6">
+
+											<!-- Group -->
+											<div class="control-group">
+												<label class="control-label" for="id">菜单id</label>
+												<div class="controls">
+													<input class="span12" id="id" name="id" type="text" />
+												</div>
+											</div>
+											<!-- // Group END -->
+
+											<!-- Group -->
+											<div class="control-group">
+												<label class="control-label" for="name">上级菜单</label>
+												<div class="controls">
+													<input class="easyui-combotree" data-options="url:'${ ctxStatic}/tree_data1.json',method:'get'" style="width:100%">
+												</div>
+											</div>
+											<!-- // Group END -->
+
+											<!-- Group -->
+											<div class="control-group">
+												<label class="control-label" for="username">链接</label>
+												<div class="controls">
+													<input class="span12" id="username" name="username"
+														type="text" />
+												</div>
+											</div>
+											<!-- // Group END -->
+
+										</div>
+										<!-- // Column END -->
+
+										<!-- Column -->
+										<div class="span6">
+
+											<!-- Group -->
+											<div class="control-group">
+												<label class="control-label" for="password">排序</label>
+												<div class="controls">
+													<input class="span12" id="password" name="password"
+														type="password" />
+												</div>
+											</div>
+											<!-- // Group END -->
+
+											<!-- Group -->
+											<div class="control-group">
+												<label class="control-label" for="confirm_password">权限标识</label>
+												<div class="controls">
+													<input class="span12" id="confirm_password"
+														name="confirm_password" type="password" />
+												</div>
+											</div>
+											<!-- // Group END -->
+
+											<!-- Group -->
+											<div class="control-group">
+												<label class="control-label" for="email">名称</label>
+												<div class="controls">
+													<input class="span12" id="email" name="email" type="email" />
+												</div>
+											</div>
+											<!-- // Group END -->
+										
+											
+											
+
+										</div>
+										<!-- // Column END -->
+
+									</div>
+									<!-- // Row END -->
+									
+									
+
+									<hr class="separator" />
+									
 				
-					<!-- Column -->
-					<div class="span6">
-					
-						<!-- Group -->
-						<div class="control-group">
-							<label class="control-label" for="id">工号</label>
-							<div class="controls"><input class="span12" id="id" name="id" type="text" /></div>
-						</div>
-						<!-- // Group END -->
-						
-						<!-- Group -->
-						<div class="control-group">
-							<label class="control-label" for="name">真实姓名</label>
-							<div class="controls"><input class="span12" id="name" name="name" type="text" /></div>
-						</div>
-						<!-- // Group END -->
-						
-						<!-- Group -->
-						<div class="control-group">
-							<label class="control-label" for="username">用户名</label>
-							<div class="controls"><input class="span12" id="username" name="username" type="text" /></div>
-						</div>
-						<!-- // Group END -->
-						
+									
+
+
+
+									<!-- Form actions -->
+									<div class="form-actions center">
+										<button type="submit"
+											class="btn btn-icon btn-primary  btn-small">
+											<i></i>保存
+										</button>
+										<button type="button"
+											class="btn btn-icon btn-default  btn-small"
+											onclick="history.go(-1)">
+											<i></i>返回
+										</button>
+									</div>
+									<!-- // Form actions END -->
+
+								</div>
+							</div>
+							<!-- // Widget END -->
+
+						</form>
+						<!-- // Form END -->
+
+						<!--PAGE CONTENT ENDS-->
 					</div>
-					<!-- // Column END -->
-					
-					<!-- Column -->
-					<div class="span6">
-					
-						<!-- Group -->
-						<div class="control-group">
-							<label class="control-label" for="password">密码</label>
-							<div class="controls"><input class="span12" id="password" name="password" type="password" /></div>
-						</div>
-						<!-- // Group END -->
-						
-						<!-- Group -->
-						<div class="control-group">
-							<label class="control-label" for="confirm_password">确认密码</label>
-							<div class="controls"><input class="span12" id="confirm_password" name="confirm_password" type="password" /></div>
-						</div>
-						<!-- // Group END -->
-						
-						<!-- Group -->
-						<div class="control-group">
-							<label class="control-label" for="email">邮箱</label>
-							<div class="controls"><input class="span12" id="email" name="email" type="email" /></div>
-						</div>
-						<!-- // Group END -->
-						
-					</div>
-					<!-- // Column END -->
-					
+					<!--/.span-->
 				</div>
-				<!-- // Row END -->
-				
-				<hr class="separator" />
+				<!--/.row-fluid-->
 				
 			
 				
-				<!-- Form actions -->
-				<div class="form-actions center">
-					<button type="submit" class="btn btn-icon btn-primary glyphicons circle_ok"><i></i>保存</button>
-					<button type="button" class="btn btn-icon btn-default glyphicons circle_remove" onclick="history.go(-1)"><i></i>返回</button>
-				</div>
-				<!-- // Form actions END -->
-				
 			</div>
+			<!--/.page-content-->
+
+			<%@ include file="/WEB-INF/page/include/ace-settings.jsp"%><!--/#ace-settings-container-->
+			<!--/#ace-settings-container-->
 		</div>
-		<!-- // Widget END -->
-		
-	</form>
-	<!-- // Form END -->
-	
-</div>	
-	
-		
-		</div>
-		<!-- // Content END -->
-		
-				</div>
-		<div class="clearfix"></div>
-		<!-- // Sidebar menu & content wrapper END -->
-				
-		<%@ include file="/WEB-INF/page/include/footer.jsp"%>
-		<!-- // Footer END -->
-		
+		<!--/.main-content-->
 	</div>
-	<!-- // Main Container Fluid END -->
-	
+	<!--/.main-container-->
 
+	<a href="#" id="btn-scroll-up"
+		class="btn-scroll-up btn btn-small btn-inverse"> <i
+		class="icon-double-angle-up icon-only bigger-110"></i>
+	</a>
 
-	
-  <%@ include file="/WEB-INF/page/include/script.jsp"%>
-  
-  <!-- Uniform Forms Plugin -->
-	<script src="${ctxStatic}/common/theme/scripts/plugins/forms/pixelmatrix-uniform/jquery.uniform.min.js"></script>
-	
+	<%@ include file="/WEB-INF/page/include/ace-script.jsp"%>
+
 	<!-- jQuery Validate Plugin -->
-	<script src="${ctxStatic}/common/theme/scripts/plugins/forms/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script
+		src="${ctxStatic}/common/theme/scripts/plugins/forms/jquery-validation/dist/jquery.validate.min.js"></script>
 	<!-- Form Validator Page Demo Script -->
 	<script src="${ctxStatic}/webadmin/js/userAdd.js"></script>
-	
-
-	
-
 </body>
 </html>
