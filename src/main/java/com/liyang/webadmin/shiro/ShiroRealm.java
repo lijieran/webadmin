@@ -35,7 +35,9 @@ public class ShiroRealm extends AuthorizingRealm{
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		
 		info.addRole("Captains");
+		info.addStringPermission("system:menu:edit");
 		
+		info.addStringPermission("system:menu:view");
 		return info;
 	}
 

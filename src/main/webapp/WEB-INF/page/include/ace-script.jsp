@@ -17,4 +17,6 @@
 <script src="${ctxStatic}/common/ace/assets/js/ace-elements.min.js"></script>
 <script src="${ctxStatic}/common/ace/assets/js/ace.min.js"></script>
 
+<script src="${ctxStatic}/common/bootbox.min.js" type="text/javascript"></script>
+
 

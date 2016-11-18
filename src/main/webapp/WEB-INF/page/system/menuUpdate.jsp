@@ -71,20 +71,20 @@
 							<!--PAGE CONTENT BEGINS-->
 
 							<form class="form-horizontal"  id="validateSubmitForm"
-							method="post" autocomplete="off" action="${ctx }/menu/save" />
+							method="post" autocomplete="off" action="${ctx }/menu/update" />
 							
 							    <div class="control-group">
 									<label class="control-label" for="id">菜单ID</label>
 
 									<div class="controls">
-										<input type="text" id="id" name="id" />
+										<input type="text" id="id" name="id"  readonly=true value="${entity.id }"/>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label" for="name">名称</label>
 
 									<div class="controls">
-										<input type="text" id="name" name="name" />
+										<input type="text" id="name" name="name"  value="${entity.name }"/>
 									</div>
 								</div>
 								
@@ -92,7 +92,7 @@
 									<label class="control-label" for="parentId"">上级菜单</label>
 
 									<div class="controls">
-										<input class="easyui-combotree" name="parentId"  value="1" data-options="url:'${ctx}/menu/combotree',method:'get'" >
+										<input class="easyui-combotree" name="parentId"  value="${entity.parentId}" data-options="url:'${ctx}/menu/combotree',method:'get'" >
 									</div>
 								</div>
 
@@ -100,7 +100,7 @@
 									<label class="control-label" for="href">链接</label>
 
 									<div class="controls">
-										<input type="text" id="href"  name="href"/>
+										<input type="text" id="href"  name="href"  value="${entity.href }"/>
 										<span class="help-inline">点击菜单跳转的页面</span>
 									</div>
 								</div>
@@ -109,9 +109,9 @@
 									<label class="control-label" for="permission"  >权限标识</label>
 
 									<div class="controls">
-										<input type="text" id="permission"  name="permission" />
+										<input type="text" id="permission"  name="permission"  value="${entity.permission }"/>
 										&nbsp; &nbsp;
-										<input type="checkbox" id="id-disable-check"  name="isShow"/>
+										<input type="checkbox" id="id-disable-check"  name="isShow"  <c:if test="${entity.isShow==1 }">checked</c:if> />
 										<label class="lbl help-inline" for="id-disable-check"> 是否显示</label>
 									</div>
 								</div>
@@ -122,7 +122,7 @@
 									<label class="control-label" for="sort">排序</label>
 
 									<div class="controls">
-										<input type="text" id="sort" name="sort" />
+										<input type="text" id="sort" name="sort"  value="${entity.sort }"/>
 									</div>
 								</div>
 

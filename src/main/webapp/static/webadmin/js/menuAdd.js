@@ -43,35 +43,28 @@ $(function()
 			
 			id: "required",
 			name: "required",
-			href: {
-				required: true
-			},
-			permission: {
-				required: true
-			},
 			confirm_password: {
 				required: true,
 				minlength: 5,
 				equalTo: "#password"
 			},
-			sort: "required"
+			sort: {
+				required: true,
+				digits:true
+			}
 		},
 		messages: {
-			id: "请输入你的工号",
+			id: "请输入菜单ID",
 			name: "请输入菜单名称",
-			href: {
-				required: "请输入菜单链接"
-			
-			},
-			permission: {
-				required: "请提供一个权限标识"
-			},
 			confirm_password: {
 				required: "请确认一下密码",
 				minlength: "请输入一个长度最少是 5 的字符串",
 				equalTo: "请输入与上面相同的密码"
 			},
-			sort: "请输入菜单排序号"
+			sort: {
+				required: "请输入菜单排序号",
+				digits: "请输入一个整数"
+			}
 		}
 	});
 

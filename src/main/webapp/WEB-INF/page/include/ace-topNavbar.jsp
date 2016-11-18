@@ -224,7 +224,7 @@
 								<img class="nav-user-photo" src="${ctxStatic}/common/ace/assets/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>欢迎,</small>
-									Jason
+									${username }
 								</span>
 
 								<i class="icon-caret-down"></i>

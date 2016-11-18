@@ -28,7 +28,7 @@ protected ApplicationContext context;
 	
 	public void testFindUsers() {
 		SystemService systemService = (SystemService)context.getBean(SystemService.class);
-		System.out.println(systemService.findUsers());
+		System.out.println(systemService.combotreeMenu());
 		
 	}
 

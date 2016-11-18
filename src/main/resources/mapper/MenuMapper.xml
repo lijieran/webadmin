@@ -3,13 +3,55 @@
 <mapper namespace="com.liyang.webadmin.persistence.mapper.MenuMapper">
 	
 	
-	<!-- 查询所有用户 -->
+	<!-- 查询所有菜单 -->
 	<select id="findMenus" resultType="menu" >
 		SELECT
 			*
 		FROM t_menu a
 	</select>
 	
+	<insert id="save">
+	    insert into t_menu 
+	    (id, sort, parent_id, name, href, is_show, permission)
+	    values
+	    (#{id}, #{sort}, #{parentId}, #{name}, #{href}, #{isShow}, #{permission})
+	</insert>
+	
+	<delete id="delete">
+	     delete from t_menu
+	     where 
+	     id=#{0}
+	</delete>
+	
+		<select id="findRoot" resultType="menu" >
+		SELECT
+			*
+		FROM t_menu a where id=1
+	</select>
+	
+	<select id="findChildren" resultType="menu" >
+		SELECT
+			*
+		FROM t_menu a where parent_id=#{0} order by sort
+	</select>
+	
+	<select id="findById" resultType="menu" >
+		SELECT
+			*
+		FROM t_menu a where id=#{0}
+	</select>
+	
+	
+	<update id="update">
+	    update t_menu set 
+		    sort = #{sort},
+		    parent_id = #{parentId},
+		    name = #{name},
+		    href = #{href},
+		    is_show = #{isShow},
+		    permission = #{permission}	    
+	    where id = #{id}
+	</update>
 	
 
 	

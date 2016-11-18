@@ -35,7 +35,6 @@ public class UserController {
 	}
 	
 	
-	@RequiresPermissions("system:user:view")
 	@ResponseBody
 	@RequestMapping(value = {"list", ""})
 	public String list( HttpServletRequest request, HttpServletResponse response, Model model) {
@@ -60,7 +59,7 @@ public class UserController {
 			 return "system/userAdd";
 		 }
 		
-	    systemService.save(user);
+	    systemService.saveUser(user);
 	    
 	   
 		

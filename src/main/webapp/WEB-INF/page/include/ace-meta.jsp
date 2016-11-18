@@ -29,7 +29,6 @@
 		<link rel="stylesheet" href="${ctxStatic}/common/ace/assets/css/ace-skins.min.css" />
 		
 
-
 		<!--[if lte IE 8]>
 		  <link rel="stylesheet" href="${ctxStatic}/common/ace/assets/css/ace-ie.min.css" />
 		<![endif]-->

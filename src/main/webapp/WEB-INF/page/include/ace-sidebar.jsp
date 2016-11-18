@@ -32,6 +32,9 @@
 				</div><!--#sidebar-shortcuts-->
 
 				<ul class="nav nav-list">
+				
+				    ${sidebar }
+				
 					<li>
 						<a href="index.html">
 							<i class="icon-dashboard"></i>
@@ -226,7 +229,7 @@
 						</ul>
 					</li>
 
-					<li class="active open">
+				<%-- 	<li class="active open">
 						<a href="#" class="dropdown-toggle">
 							<i class="icon-file-alt"></i>
 
@@ -267,7 +270,7 @@
 								</a>
 							</li>
 						</ul>
-					</li>
+					</li> --%>
 				</ul><!--/.nav-list-->
 
 				<div class="sidebar-collapse" id="sidebar-collapse">
