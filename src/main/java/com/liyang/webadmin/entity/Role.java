@@ -4,6 +4,7 @@ public class Role {
 	
 	private String id;
 	private String name;
+	private String menus;
 	
 	public String getId() {
 		return id;
@@ -17,6 +18,13 @@ public class Role {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getMenus() {
+		return menus;
+	}
+	public void setMenus(String menus) {
+		this.menus = menus;
+	}
+	
 	
 	
 

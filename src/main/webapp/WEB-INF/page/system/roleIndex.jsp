@@ -8,7 +8,7 @@
 		<title>角色管理-后台管理系统</title>
 
 	    <%@ include file="/WEB-INF/page/include/ace-meta.jsp"%>
-
+    </head>
 	<body>
 		 <%@ include file="/WEB-INF/page/include/ace-topNavbar.jsp"%>
 
@@ -67,18 +67,16 @@
 								    </button>
 								</div>
 			                   <table data-toggle="table"
-								       data-url="http://localhost:8080/webadmin/user/list"
-								       data-query-params="queryParams"
+								       data-url="http://localhost:8080/webadmin/role/list"
 								       data-pagination="true"
 								       data-search="false"
 								       data-toolbar="#toolbar"
 								       data-height="500">
 								    <thead>
 								    <tr>
-								        <th data-field="id">工号</th>
-								        <th data-field="username">用户名</th>
-								         <th data-field="password">密码</th>
-								        <th data-field="name">真实姓名</th>	       		        
+								        <th data-field="id">编号</th>
+								        <th data-field="name">角色名称</th>	   
+								        <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents">操作</th>     		        
 								    </tr>
 								    </thead>
 								</table>
@@ -100,8 +98,48 @@
 	      <%@ include file="/WEB-INF/page/include/ace-script.jsp"%>
 	      <script type="text/javascript">
 			  	$("#menuAdd-button").click(function(){
-					window.location.href = "${ctx}/user/userAdd";
+					window.location.href = "${ctx}/role/roleAdd";
 				});
+			  	
+				function actionFormatter(value, row, index) {
+			  	    return [
+			  	        '<a class="edit ml10" href="javascript:void(0)" title="Edit">',
+			  	        '修改',
+			  	        '</a>',
+			  	        '<a class="remove ml10" href="javascript:void(0)"  title="Remove">',
+			  	        '删除',
+			  	        '</a>'
+			  	    ].join('');
+			  	}
+
+			  	window.actionEvents = {
+			  	    'click .edit': function (e, value, row, index) {
+			  	    	window.location.href = "${ctx}/role/roleUpdate?id="+row.id;
+			  	    },
+			  	    'click .remove': function (e, value, row, index) {
+			  	       // alert('You click remove icon, row: ' + row.id);
+			  	       // console.log(value, row, index);
+			  	        
+				  	      bootbox.confirm({
+					  		    message: "确认要删除该菜单吗？",
+					  		    buttons: {
+					  		        confirm: {
+					  		            label: '确定',
+					  		            className: 'btn-success btn-small'
+					  		        },
+					  		        cancel: {
+					  		            label: '取消',
+					  		            className: 'btn-danger btn-small'
+					  		        }
+					  		    },
+					  		    callback: function (result) {
+					  		        if(result) {
+					  		        	window.location.href = "${ctx}/role/delete?id="+row.id;
+					  		        }
+					  		    }
+					  		});
+			  	    }
+			  	};
 	      </script>
 	</body>
 </html>

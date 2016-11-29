@@ -10,11 +10,15 @@ import javax.annotation.Resource;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.Gson;
+import com.liyang.authc.ZtreeEntity;
 import com.liyang.webadmin.entity.Menu;
+import com.liyang.webadmin.entity.Role;
 import com.liyang.webadmin.entity.User;
 import com.liyang.webadmin.persistence.mapper.MenuMapper;
+import com.liyang.webadmin.persistence.mapper.RoleMapper;
 import com.liyang.webadmin.persistence.mapper.UserMapper;
 import com.liyang.webadmin.service.SystemService;
 
@@ -29,6 +33,9 @@ public class SystemServiceImpl implements SystemService{
 	
 	@Resource
 	private MenuMapper menuMapper;
+	
+	@Resource
+	private RoleMapper roleMapper;
 
 	public String findUsers() {
         List<User> users = userMapper.findUsers();
@@ -138,6 +145,12 @@ public class SystemServiceImpl implements SystemService{
 
 	private void formatSidebar(Menu entity, StringBuffer buffer, String uri) {
 		try {
+			
+			if(uri.contains("Update") || uri.contains("Add")) {
+				String tmp = uri.substring(uri.lastIndexOf("/"));
+				uri = uri.replace(tmp, "/index");
+			}
+			
 			List<Menu> children = menuMapper.findChildren(entity.getId());
 			
 			String titleTag = "<li>";
@@ -202,6 +215,99 @@ public class SystemServiceImpl implements SystemService{
 			if(uri.equals(entity.getHref())) return true;
 		}
 		return false;
+	}
+
+	public String ztreeMenu() {
+		try {
+
+			Gson gson = new Gson();
+
+			return gson.toJson(menuMapper.findZtreeEntity());
+
+		} catch (Exception e) {
+			logger.error(e, e);
+		}
+		return null;
+	}
+
+	@Transactional
+	public void saveRole(Role entity) {
+		try {
+			
+			roleMapper.clearRoleMenu(entity.getId());
+			
+			roleMapper.save(entity);
+			
+			String[] ids = entity.getMenus().split(",");
+			for(String id:ids) {
+				roleMapper.saveRoleMenu(entity.getId(), id);
+			}
+			
+		} catch (Exception e) {
+			logger.error(e,e);
+		}
+		
+	}
+
+	public String findRoles() {
+		try {
+			List<Role> list = roleMapper.findAll();
+	        Gson gson = new Gson();
+	        String json = gson.toJson(list);
+			return json;
+		} catch (Exception e) {
+			logger.error(e,e);
+			return null;
+		}
+	}
+
+	public Role findRoleById(String id) {
+		try {
+			return roleMapper.findById(id);
+		} catch (Exception e) {
+			logger.error(e,e);
+		}
+		return null;
+	}
+
+	public String ztreeMenu(String roleid) {
+		try {
+
+			List<ZtreeEntity> list = menuMapper.findZtreeEntity();
+			
+			List<String> menus = roleMapper.findMenusByRole(roleid);
+			
+			for(ZtreeEntity entity:list)	 {
+				String id =  entity.getId();
+				if(menus.contains(id)) entity.setChecked(true);
+			}
+			
+			
+			Gson gson = new Gson();
+
+			return gson.toJson(list);
+
+		} catch (Exception e) {
+			logger.error(e, e);
+		}
+		return null;
+	}
+
+	@Transactional
+	public void updateRole(Role entity) {
+		try {
+			roleMapper.clearRoleMenu(entity.getId());
+			
+			roleMapper.update(entity);
+			
+			String[] ids = entity.getMenus().split(",");
+			for(String id:ids) {
+				roleMapper.saveRoleMenu(entity.getId(), id);
+			}
+		} catch (Exception e) {
+			logger.error(e,e);
+		}
+		
 	}
 
 

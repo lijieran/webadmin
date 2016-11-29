@@ -53,6 +53,10 @@
 	    where id = #{id}
 	</update>
 	
-
+<select id="findZtreeEntity" resultType="com.liyang.authc.ZtreeEntity" >
+		SELECT
+			name,parent_id pId, id  
+		FROM t_menu a
+	</select>
 	
 </mapper>

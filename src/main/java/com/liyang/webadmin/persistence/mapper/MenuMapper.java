@@ -2,6 +2,7 @@ package com.liyang.webadmin.persistence.mapper;
 
 import java.util.List;
 
+import com.liyang.authc.ZtreeEntity;
 import com.liyang.webadmin.entity.Menu;
 
 public interface MenuMapper {
@@ -20,5 +21,7 @@ public interface MenuMapper {
 	Menu findById(String id);
 	
 	void update(Menu entity);
+	
+	List<ZtreeEntity> findZtreeEntity();
 
 }

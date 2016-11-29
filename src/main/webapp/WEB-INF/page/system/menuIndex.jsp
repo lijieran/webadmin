@@ -9,12 +9,7 @@
 
 	    <%@ include file="/WEB-INF/page/include/ace-meta.jsp"%>
 
-<style type="text/css">
-.ml10 {
-	margin-left: 10px;
-}
-</style>
-
+     </head>
 <body>
 		 <%@ include file="/WEB-INF/page/include/ace-topNavbar.jsp"%>
 
@@ -137,7 +132,6 @@
 			  	       // alert('You click remove icon, row: ' + row.id);
 			  	       // console.log(value, row, index);
 			  	        
-			  	          var href = "${ctx}/menu/delete?id="+row.id;
 				  	      bootbox.confirm({
 					  		    message: "确认要删除该菜单吗？",
 					  		    buttons: {
@@ -151,9 +145,7 @@
 					  		        }
 					  		    },
 					  		    callback: function (result) {
-					  		        console.log('This was logged in the callback: ' + result);
 					  		        if(result) {
-					  		        	console.log("---");
 					  		        	window.location.href = "${ctx}/menu/delete?id="+row.id;
 					  		        }
 					  		    }

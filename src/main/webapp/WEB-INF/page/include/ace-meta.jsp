@@ -34,4 +34,32 @@
 		<![endif]-->
 
 		<!--inline styles related to this page-->
-	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    
+	    <style type="text/css">
+.ml10 {
+	margin-left: 10px;
+}
+.page-list >.btn-group>.btn{
+       color: #333 !important;
+    background-color: #fff  !important;
+    display: inline-block;
+    padding: 4px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid  #ccc !important;
+    border-radius: 4px;
+}
+</style>
+	    

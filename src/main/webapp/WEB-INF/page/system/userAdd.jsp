@@ -18,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="${ctxStatic}/common/easyui/themes/icon.css">
 	<script type="text/javascript" src="${ctxStatic}/common/easyui/jquery.min.js"></script>
 	<script type="text/javascript" src="${ctxStatic}/common/easyui/jquery.easyui.min.js"></script>
-	
+	</head>
 <body>
 	<%@ include file="/WEB-INF/page/include/ace-topNavbar.jsp"%>
 
