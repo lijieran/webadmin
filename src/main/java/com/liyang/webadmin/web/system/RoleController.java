@@ -10,8 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.liyang.webadmin.entity.Menu;
 import com.liyang.webadmin.entity.Role;
+import com.liyang.webadmin.service.AuthenticationService;
 import com.liyang.webadmin.service.SystemService;
 
 @Controller
@@ -24,6 +24,9 @@ public class RoleController {
 	@Resource
 	private SystemService systemService;
 	
+	@Resource
+	private AuthenticationService authenticationService;
+	
 	@RequestMapping(value = {"index"})
 	public String index() {
 		logger.info("===========");
@@ -33,14 +36,14 @@ public class RoleController {
 	@RequestMapping(value = {"roleAdd"})
 	public String roleAdd(Model model) {
 		
-		model.addAttribute("treelist", systemService.ztreeMenu());
+		model.addAttribute("treelist", authenticationService.ztreeMenu());
 		return "system/roleAdd";
 	}
 	
 	@RequestMapping(value = {"roleUpdate"})
 	public String roleUpdate(HttpServletRequest request, Model model) {
 		String id = request.getParameter("id");
-		model.addAttribute("treelist", systemService.ztreeMenu(id));
+		model.addAttribute("treelist", authenticationService.ztreeMenu(id));
 		
 		Role entity = systemService.findRoleById(id);
 		model.addAttribute("entity", entity);
@@ -65,6 +68,14 @@ public class RoleController {
 	public String update(Role entity, Model model, HttpServletRequest request) {
 		
 		return this.saveOrUpdate(entity, model, request, "update");
+	}
+	
+	@RequestMapping(value = {"delete"})
+	public String delete(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		logger.info("角色删除===="+id);
+		systemService.deleteRole(id);
+		return "redirect:"  + "/role/index";
 	}
 	
 	private String saveOrUpdate(Role entity, Model model, HttpServletRequest request, String type) {

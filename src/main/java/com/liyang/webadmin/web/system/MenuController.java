@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.liyang.webadmin.entity.Menu;
+import com.liyang.webadmin.service.AuthenticationService;
 import com.liyang.webadmin.service.SystemService;
 
 @Controller
@@ -22,6 +23,9 @@ public class MenuController {
 	
 	@Resource
 	private SystemService systemService;
+	
+	@Resource
+	private AuthenticationService authenticationService;
 	
 	@RequiresPermissions("system:menu:view")
 	@RequestMapping(value = {"index"})
@@ -56,7 +60,7 @@ public class MenuController {
 	@RequestMapping(value = {"combotree", ""})
 	public String combotree( HttpServletRequest request, HttpServletResponse response, Model model) {
 		
-		String res = systemService.combotreeMenu();
+		String res = authenticationService.combotreeMenu();
 		return res;
 	}
 	

@@ -27,7 +27,7 @@ public class UserController {
 	private SystemService systemService;
 	
 	
-	@RequiresPermissions("system:user:view")
+	//@RequiresPermissions("system:user:view")
 	@RequestMapping(value = {"index"})
 	public String index() {
 		logger.info("===========");

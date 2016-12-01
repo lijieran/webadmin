@@ -2,7 +2,7 @@ package com.liyang.webadmin.persistence.mapper;
 
 import java.util.List;
 
-import com.liyang.authc.ZtreeEntity;
+import com.liyang.module.authc.ZtreeEntity;
 import com.liyang.webadmin.entity.Menu;
 
 public interface MenuMapper {

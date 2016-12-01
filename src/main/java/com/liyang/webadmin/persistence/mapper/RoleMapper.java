@@ -8,6 +8,7 @@ public interface RoleMapper {
 	
 	void save(Role entity);
 	void update(Role entity);
+	void delete(String id);
 	
 	List<Role> findAll();
 	

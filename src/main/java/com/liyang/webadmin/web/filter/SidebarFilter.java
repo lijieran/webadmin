@@ -13,8 +13,8 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.web.filter.GenericFilterBean;
 
+import com.liyang.module.spring.SpringContextHolder;
 import com.liyang.webadmin.service.SystemService;
-import com.liyang.webadmin.web.SpringContextHolder;
 
 public class SidebarFilter extends GenericFilterBean{
 	

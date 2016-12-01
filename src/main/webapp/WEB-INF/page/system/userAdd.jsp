@@ -8,16 +8,7 @@
 <title>菜单添加-后台管理系统</title>
 
 <%@ include file="/WEB-INF/page/include/ace-meta.jsp"%>
-<link rel="stylesheet" href="${ctxStatic}/webadmin/css/widget-form.css" />
 
-	<link rel="stylesheet" type="text/css" href="${ctxStatic}/common/easyui/themes/default/combo.css">
-	<link rel="stylesheet" type="text/css" href="${ctxStatic}/common/easyui/themes/default/combobox.css">
-	<link rel="stylesheet" type="text/css" href="${ctxStatic}/common/easyui/themes/default/tree.css">
-	<link rel="stylesheet" type="text/css" href="${ctxStatic}/common/easyui/themes/default/textbox.css">
-	<link rel="stylesheet" type="text/css" href="${ctxStatic}/common/easyui/themes/default/panel.css">
-	<link rel="stylesheet" type="text/css" href="${ctxStatic}/common/easyui/themes/icon.css">
-	<script type="text/javascript" src="${ctxStatic}/common/easyui/jquery.min.js"></script>
-	<script type="text/javascript" src="${ctxStatic}/common/easyui/jquery.easyui.min.js"></script>
 	</head>
 <body>
 	<%@ include file="/WEB-INF/page/include/ace-topNavbar.jsp"%>
@@ -60,6 +51,14 @@
 			</div>
 
 			<div class="page-content">
+			
+				<div class="page-header position-relative">
+						<h1>
+							用户信息
+							
+						</h1>
+					</div><!--/.page-header-->
+			
 				<div class="row-fluid">
 					<div class="span12">
 						<!--PAGE CONTENT BEGINS-->
@@ -81,121 +80,88 @@
 						<form class="form-horizontal margin-none" id="validateSubmitForm"
 							method="get" autocomplete="off" action="${ctx }/user/save">
 
-							<!-- Widget -->
-							<div class="widget widget-heading-simple widget-body-gray">
+							     <div class="control-group">
+									<label class="control-label" for="id">用户ID</label>
 
-								<!-- Widget heading -->
-								<div class="widget-head">
-									<h4 class="heading"></h4>
-								</div>
-								<!-- // Widget heading END -->
-
-								<div class="widget-body">
-
-									<!-- Row -->
-									<div class="row-fluid">
-
-										<!-- Column -->
-										<div class="span6">
-
-											<!-- Group -->
-											<div class="control-group">
-												<label class="control-label" for="id">菜单id</label>
-												<div class="controls">
-													<input class="span12" id="id" name="id" type="text" />
-												</div>
-											</div>
-											<!-- // Group END -->
-
-											<!-- Group -->
-											<div class="control-group">
-												<label class="control-label" for="name">上级菜单</label>
-												<div class="controls">
-													<input class="easyui-combotree" data-options="url:'${ ctxStatic}/tree_data1.json',method:'get'" style="width:100%">
-												</div>
-											</div>
-											<!-- // Group END -->
-
-											<!-- Group -->
-											<div class="control-group">
-												<label class="control-label" for="username">链接</label>
-												<div class="controls">
-													<input class="span12" id="username" name="username"
-														type="text" />
-												</div>
-											</div>
-											<!-- // Group END -->
-
-										</div>
-										<!-- // Column END -->
-
-										<!-- Column -->
-										<div class="span6">
-
-											<!-- Group -->
-											<div class="control-group">
-												<label class="control-label" for="password">排序</label>
-												<div class="controls">
-													<input class="span12" id="password" name="password"
-														type="password" />
-												</div>
-											</div>
-											<!-- // Group END -->
-
-											<!-- Group -->
-											<div class="control-group">
-												<label class="control-label" for="confirm_password">权限标识</label>
-												<div class="controls">
-													<input class="span12" id="confirm_password"
-														name="confirm_password" type="password" />
-												</div>
-											</div>
-											<!-- // Group END -->
-
-											<!-- Group -->
-											<div class="control-group">
-												<label class="control-label" for="email">名称</label>
-												<div class="controls">
-													<input class="span12" id="email" name="email" type="email" />
-												</div>
-											</div>
-											<!-- // Group END -->
-										
-											
-											
-
-										</div>
-										<!-- // Column END -->
-
+									<div class="controls">
+										<input type="text" id="id" name="id" />
 									</div>
-									<!-- // Row END -->
-									
-									
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="username">账号</label>
 
-									<hr class="separator" />
-									
+									<div class="controls">
+										<input type="text" id="username" name="username" />
+									</div>
+								</div>
+								
+								<div class="control-group">
+									<label class="control-label" for="name">姓名</label>
+
+									<div class="controls">
+										<input type="text" id="name" name="name" />
+									</div>
+								</div>
+								
+								<div class="control-group">
+									<label class="control-label" for="password">密码</label>
+
+									<div class="controls">
+										<input type="password" id="password" name="password" />
+									</div>
+								</div>
+								
+								<div class="control-group">
+									<label class="control-label" for="confirm_password">确认密码</label>
+
+									<div class="controls">
+										<input type="password" id="confirm_password" name="confirm_password" />
+									</div>
+								</div>
+																		
 				
-									
+
+							
+										<div class="control-group">
+											<label class="control-label">角色</label>
+
+											<div class="controls">
+												<label>
+													<input name="form-field-checkbox" type="checkbox" />
+													<span class="lbl"> choice 1</span>
+												</label>
+
+												<label>
+													<input name="form-field-checkbox" type="checkbox" />
+													<span class="lbl"> choice 2</span>
+												</label>
+
+												<label>
+													<input name="form-field-checkbox" class="ace-checkbox-2" type="checkbox" />
+													<span class="lbl"> choice 3</span>
+												</label>
+
+												<label>
+													<input name="form-field-checkbox" type="checkbox" />
+													<span class="lbl"> disabled</span>
+												</label>
+											</div>
+										</div>
 
 
 
-									<!-- Form actions -->
-									<div class="form-actions center">
-										<button type="submit"
-											class="btn btn-icon btn-primary  btn-small">
-											<i></i>保存
-										</button>
-										<button type="button"
-											class="btn btn-icon btn-default  btn-small"
-											onclick="history.go(-1)">
-											<i></i>返回
-										</button>
-									</div>
-									<!-- // Form actions END -->
+										<div class="form-actions">
+									<button class="btn btn-info" type="submit">
+										保存
+									</button>
 
+									&nbsp; &nbsp; &nbsp;
+									<button class="btn" type="reset" onclick="history.go(-1)">
+										返回
+									</button>
 								</div>
-							</div>
-							<!-- // Widget END -->
+
+								<div class="hr"></div>
 
 						</form>
 						<!-- // Form END -->

@@ -1,4 +1,4 @@
-package com.liyang.authc;
+package com.liyang.module.authc;
 
 public class ZtreeEntity {
 	

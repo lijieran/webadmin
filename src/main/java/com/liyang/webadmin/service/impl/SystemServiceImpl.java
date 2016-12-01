@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.Gson;
-import com.liyang.authc.ZtreeEntity;
 import com.liyang.webadmin.entity.Menu;
 import com.liyang.webadmin.entity.Role;
 import com.liyang.webadmin.entity.User;
@@ -70,32 +69,6 @@ public class SystemServiceImpl implements SystemService{
 	public void deleteMenu(String id) {
 		menuMapper.delete(id);
 		
-	}
-
-	public String combotreeMenu() {
-		try {
-			
-			Menu root = menuMapper.findRoot();
-			
-			List list = new ArrayList();
-			
-			Map rootMap = new HashMap();
-			rootMap.put("id", root.getId());
-			rootMap.put("text", root.getName());
-			
-			rootMap.put("children", this.findChildrenMenus(root.getId()));
-			
-			list.add(rootMap);
-			
-			Gson gson = new Gson( );
-			
-			
-			return gson.toJson(list);
-			
-		} catch (Exception e) {
-			logger.error(e,e);
-		}
-		return null;
 	}
 	
 	
@@ -217,18 +190,7 @@ public class SystemServiceImpl implements SystemService{
 		return false;
 	}
 
-	public String ztreeMenu() {
-		try {
 
-			Gson gson = new Gson();
-
-			return gson.toJson(menuMapper.findZtreeEntity());
-
-		} catch (Exception e) {
-			logger.error(e, e);
-		}
-		return null;
-	}
 
 	@Transactional
 	public void saveRole(Role entity) {
@@ -270,28 +232,7 @@ public class SystemServiceImpl implements SystemService{
 		return null;
 	}
 
-	public String ztreeMenu(String roleid) {
-		try {
 
-			List<ZtreeEntity> list = menuMapper.findZtreeEntity();
-			
-			List<String> menus = roleMapper.findMenusByRole(roleid);
-			
-			for(ZtreeEntity entity:list)	 {
-				String id =  entity.getId();
-				if(menus.contains(id)) entity.setChecked(true);
-			}
-			
-			
-			Gson gson = new Gson();
-
-			return gson.toJson(list);
-
-		} catch (Exception e) {
-			logger.error(e, e);
-		}
-		return null;
-	}
 
 	@Transactional
 	public void updateRole(Role entity) {
@@ -310,6 +251,20 @@ public class SystemServiceImpl implements SystemService{
 		
 	}
 
+	public User findByUsername(String username) {
+		return userMapper.findByUsername(username);
+	}
+
+	@Transactional
+	public void deleteRole(String id) {
+		try {
+			roleMapper.clearRoleMenu(id);
+			roleMapper.delete(id);
+		} catch (Exception e) {
+			logger.error(e,e);
+		}
+		
+	}
 
 
 }

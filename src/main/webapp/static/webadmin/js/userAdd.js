@@ -41,7 +41,7 @@ $(function()
 	$("#validateSubmitForm").validate({
 		rules: {
 			
-			no: "required",
+			id: "required",
 			name: "required",
 			username: {
 				required: true,
@@ -63,10 +63,10 @@ $(function()
 			}
 		},
 		messages: {
-			id: "请输入你的工号",
-			name: "请输入你的用户名",
+			id: "请输入你的用户ID",
+			name: "请输入你的姓名",
 			username: {
-				required: "请输入你的用户名",
+				required: "请输入你的账号",
 				remote: "用户登录名已存在",
 				minlength: "请输入一个长度最少是 2 的字符串"
 			},

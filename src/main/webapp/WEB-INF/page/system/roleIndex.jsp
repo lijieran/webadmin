@@ -121,7 +121,7 @@
 			  	       // console.log(value, row, index);
 			  	        
 				  	      bootbox.confirm({
-					  		    message: "确认要删除该菜单吗？",
+					  		    message: "确认要删除该角色吗？",
 					  		    buttons: {
 					  		        confirm: {
 					  		            label: '确定',

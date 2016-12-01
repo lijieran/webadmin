@@ -1,4 +1,4 @@
-package com.liyang.webadmin.shiro;
+package com.liyang.module.authc.shiro;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;

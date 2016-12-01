@@ -1,4 +1,4 @@
-package com.liyang.webadmin.mybatis;
+package com.liyang.module.mybatis;
 
 
 import org.apache.commons.lang3.StringUtils;

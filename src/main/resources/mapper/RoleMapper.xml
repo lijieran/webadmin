@@ -16,6 +16,12 @@
 	    (#{id}, #{name})
 	</insert>
 	
+	<delete id="delete">
+	     delete from t_role
+	     where 
+	     id=#{0}
+	</delete>
+	
 	<update id="update">
 	    update t_role set 
 		    name = #{name} 

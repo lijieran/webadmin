@@ -1,7 +1,7 @@
 /**
  * Copyright &copy; 2012-2016 <a href="https://www.aaa.com">author</a> All rights reserved.
  */
-package com.liyang.webadmin.web;
+package com.liyang.module.spring;
 
 
 import org.apache.commons.lang3.Validate;

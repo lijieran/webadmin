@@ -1,6 +1,5 @@
 package com.liyang.webadmin.service;
 
-import java.util.List;
 
 import com.liyang.webadmin.entity.Menu;
 import com.liyang.webadmin.entity.Role;
@@ -9,6 +8,9 @@ import com.liyang.webadmin.entity.User;
 public interface SystemService {
 	
 	public String findUsers();
+	
+	public User findByUsername(String username) throws Exception;
+
 	
 	public boolean checkLoginName(String username);
 	
@@ -19,12 +21,8 @@ public interface SystemService {
 	public void saveMenu(Menu entity);
 	
 	public void deleteMenu(String id);
+		
 	
-	public String combotreeMenu();
-	
-	public String ztreeMenu();
-	
-	public String ztreeMenu(String roleid);
 	
 	public Menu findMenuById(String id);
 	
@@ -38,5 +36,7 @@ public interface SystemService {
 	public String findRoles();
 	
 	public Role findRoleById(String id);
+
+	public void deleteRole(String id);
 
 }

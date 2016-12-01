@@ -1,4 +1,4 @@
-package com.liyang.webadmin.mybatis.plugins;
+package com.liyang.module.mybatis.plugins;
 
 import java.util.Properties;
 
