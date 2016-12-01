@@ -73,13 +73,13 @@
 							<form class="form-horizontal"  id="validateSubmitForm"
 							method="post" autocomplete="off" action="${ctx }/menu/save" />
 							
-							    <div class="control-group">
+							  <!--   <div class="control-group">
 									<label class="control-label" for="id">菜单ID</label>
 
 									<div class="controls">
 										<input type="text" id="id" name="id" />
 									</div>
-								</div>
+								</div> -->
 								<div class="control-group">
 									<label class="control-label" for="name">名称</label>
 
@@ -92,7 +92,7 @@
 									<label class="control-label" for="parentId"">上级菜单</label>
 
 									<div class="controls">
-										<input class="easyui-combotree" name="parentId"  value="1" data-options="url:'${ctx}/menu/combotree',method:'get'" >
+										<input class="easyui-combotree" name="parentId"  value="0" data-options="url:'${ctx}/menu/combotree',method:'get'" >
 									</div>
 								</div>
 
@@ -123,6 +123,14 @@
 
 									<div class="controls">
 										<input type="text" id="sort" name="sort" />
+									</div>
+								</div>
+								
+								<div class="control-group">
+									<label class="control-label" for="icon">图标</label>
+
+									<div class="controls">
+										<input type="text" id="icon" name="icon"  />
 									</div>
 								</div>
 

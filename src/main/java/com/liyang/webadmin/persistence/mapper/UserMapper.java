@@ -11,5 +11,7 @@ public interface UserMapper {
 	List<User> findUsers();
 	
 	void save(User user);
+	
+	List<String> findRoles(String id);
 
 }

@@ -41,7 +41,6 @@ $(function()
 	$("#validateSubmitForm").validate({
 		rules: {
 			
-			id: "required",
 			name: "required",
 			confirm_password: {
 				required: true,
@@ -54,7 +53,6 @@ $(function()
 			}
 		},
 		messages: {
-			id: "请输入菜单ID",
 			name: "请输入菜单名称",
 			confirm_password: {
 				required: "请确认一下密码",

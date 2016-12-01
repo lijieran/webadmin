@@ -1,5 +1,7 @@
 package com.liyang.webadmin.web.system;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.liyang.module.authc.CheckboxEntity;
+import com.liyang.webadmin.entity.Role;
 import com.liyang.webadmin.entity.User;
 import com.liyang.webadmin.service.SystemService;
 
@@ -45,14 +49,27 @@ public class UserController {
 	
 	
 	@RequestMapping(value = {"userAdd"})
-	public String userAdd() {
+	public String userAdd(Model model) {
+		List<CheckboxEntity> roles = systemService.findCheckboxRole(null);
+		model.addAttribute("roles", roles);
 		return "system/userAdd";
 	}
+	
+	@RequestMapping(value = {"userUpdate"})
+	public String userUpdate(Model model, HttpServletRequest request) {
+		String id = request.getParameter("id");
+		List<CheckboxEntity> roles = systemService.findCheckboxRole(id);
+		model.addAttribute("roles", roles);
+		return "system/userUpdate";
+	}
+	
+	
 	
 	@RequestMapping(value = {"save"})
 	public String save(User user, Model model) {
 		
 		logger.info("用户信息：" + user.getUsername());
+		
 		
 		 if(user.getId()==null || user.getName()==null || user.getPassword()==null) {
 			 model.addAttribute("error", "非法请求");

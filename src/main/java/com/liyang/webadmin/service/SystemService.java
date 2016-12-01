@@ -1,6 +1,9 @@
 package com.liyang.webadmin.service;
 
 
+import java.util.List;
+
+import com.liyang.module.authc.CheckboxEntity;
 import com.liyang.webadmin.entity.Menu;
 import com.liyang.webadmin.entity.Role;
 import com.liyang.webadmin.entity.User;
@@ -34,6 +37,8 @@ public interface SystemService {
 	public void updateRole(Role entity);
 	
 	public String findRoles();
+	public List<Role> findAllRole();
+	public List<CheckboxEntity> findCheckboxRole(String userid);
 	
 	public Role findRoleById(String id);
 

@@ -125,6 +125,14 @@
 										<input type="text" id="sort" name="sort"  value="${entity.sort }"/>
 									</div>
 								</div>
+								
+								<div class="control-group">
+									<label class="control-label" for="icon">图标</label>
+
+									<div class="controls">
+										<input type="text" id="icon" name="icon"  value="${entity.icon }"/>
+									</div>
+								</div>
 
 
 								<div class="form-actions">

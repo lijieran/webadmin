@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.Gson;
+import com.liyang.module.authc.CheckboxEntity;
+import com.liyang.webadmin.entity.Constant;
 import com.liyang.webadmin.entity.Menu;
 import com.liyang.webadmin.entity.Role;
 import com.liyang.webadmin.entity.User;
@@ -63,7 +65,19 @@ public class SystemServiceImpl implements SystemService{
 	}
 
 	public void saveMenu(Menu entity) {
-		menuMapper.save(entity);
+		try {
+			String maxid = menuMapper.findMaxId(entity.getParentId());
+			String id = null;
+			if(maxid==null ) {
+				id =entity.getParentId() + "1";
+			} else {
+				id = (Integer.parseInt(maxid)+1) + "";
+			}
+			entity.setId(id);
+			menuMapper.save(entity);
+		} catch (Exception e) {
+			logger.error(e,e);
+		}
 	}
 
 	public void deleteMenu(String id) {
@@ -104,7 +118,7 @@ public class SystemServiceImpl implements SystemService{
 	}
 
 	public String generateSidebar(String uri) {
-		List<Menu> menus = menuMapper.findChildren("1");
+		List<Menu> menus = menuMapper.findChildren(Constant.MENU_ROOT_ID);
 		
 		StringBuffer buffer = new StringBuffer();
 		
@@ -119,14 +133,18 @@ public class SystemServiceImpl implements SystemService{
 	private void formatSidebar(Menu entity, StringBuffer buffer, String uri) {
 		try {
 			
+			if(entity.getIsShow().equals("0")) return;
+			
 			if(uri.contains("Update") || uri.contains("Add")) {
 				String tmp = uri.substring(uri.lastIndexOf("/"));
 				uri = uri.replace(tmp, "/index");
 			}
 			
-			List<Menu> children = menuMapper.findChildren(entity.getId());
+			List<Menu> children = menuMapper.findDisplayChildren(entity.getId());
 			
 			String titleTag = "<li>";
+			String icon = entity.getIcon();
+			if(icon==null) icon="icon-desktop";
 			
 			if(children.size()==0) {
 				
@@ -135,7 +153,7 @@ public class SystemServiceImpl implements SystemService{
 				
 				buffer.append(titleTag);
 				  buffer.append("<a href=\"##ROOT##"+entity.getHref()+"\">");
-				    buffer.append("<i class=\"icon-dashboard\"></i>");
+				    buffer.append("<i class=\""+icon+"\"></i>");
 				    buffer.append("<span class=\"menu-text\"> "+entity.getName()+" </span>");
 				  buffer.append("</a>");
 				buffer.append("</li>");
@@ -148,7 +166,7 @@ public class SystemServiceImpl implements SystemService{
 				  else buffer.append("<li>");
 				  
 				  buffer.append("<a href=\"#\" class=\"dropdown-toggle\">");
-				  buffer.append("<i class=\"icon-desktop\"></i>");
+				  buffer.append("<i class=\""+icon+"\"></i>");
 				  buffer.append("<span class=\"menu-text\"> "+entity.getName()+" </span>");
 				  buffer.append("<b class=\"arrow icon-angle-down\"></b>");
 				  buffer.append("</a>");
@@ -264,6 +282,34 @@ public class SystemServiceImpl implements SystemService{
 			logger.error(e,e);
 		}
 		
+	}
+
+	public List<Role> findAllRole() {
+		return roleMapper.findAll();
+	}
+
+	public List<CheckboxEntity> findCheckboxRole(String userid) {
+		List<CheckboxEntity> result = new ArrayList<CheckboxEntity>();
+		try {
+			List<String> roles = null;
+			if(userid!=null) {
+		        roles = userMapper.findRoles(userid);
+			}
+			List<Role> list = roleMapper.findAll();
+			for(Role role:list) {
+				CheckboxEntity entity = new CheckboxEntity();
+				entity.setChecked(false);
+				entity.setName(role.getName());
+				entity.setValue(role.getId());
+				if(roles!=null && roles.contains(role.getId())) entity.setChecked(true);
+				result.add(entity);
+			}	
+			
+			
+		} catch (Exception e) {
+			logger.error(e,e);
+		}
+		return result;
 	}
 
 

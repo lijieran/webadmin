@@ -7,6 +7,8 @@ public class User {
 	private String username;		// 账号
 	private String name;	// 姓名
 	
+    private String roles;
+	
 	public String getId() {
 		return id;
 	}
@@ -30,6 +32,12 @@ public class User {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getRoles() {
+		return roles;
+	}
+	public void setRoles(String roles) {
+		this.roles = roles;
 	}
 	
 

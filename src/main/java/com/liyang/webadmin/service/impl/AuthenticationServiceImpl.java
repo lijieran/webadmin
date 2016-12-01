@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 import com.liyang.module.authc.ZtreeEntity;
+import com.liyang.webadmin.entity.Constant;
 import com.liyang.webadmin.entity.Menu;
 import com.liyang.webadmin.entity.User;
 import com.liyang.webadmin.persistence.mapper.MenuMapper;
@@ -77,7 +78,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 	public String combotreeMenu() {
 	try {
 			
-			Menu root = menuMapper.findRoot();
+			Menu root = menuMapper.findById(Constant.MENU_ROOT_ID);
 			
 			List list = new ArrayList();
 			

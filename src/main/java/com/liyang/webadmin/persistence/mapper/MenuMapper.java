@@ -14,14 +14,16 @@ public interface MenuMapper {
 	void delete(String id);
 	
 	
-	Menu findRoot();
-	
 	List<Menu> findChildren(String id);
+	
+	List<Menu> findDisplayChildren(String id);
 	
 	Menu findById(String id);
 	
 	void update(Menu entity);
 	
 	List<ZtreeEntity> findZtreeEntity();
+	
+	String findMaxId(String id);
 
 }

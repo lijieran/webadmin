@@ -5,7 +5,7 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        ">
        
-       <bean id="shiroFormAuthenticationFilter" class="com.liyang.authc.shiro.ShiroFormAuthenticationFilter"></bean>
+       <bean id="shiroFormAuthenticationFilter" class="com.liyang.module.authc.shiro.ShiroFormAuthenticationFilter"></bean>
        <!--realm配置，realm是shiro的桥梁，它主要是用来判断subject是否可以登录及权限等-->  
       <bean id="shiroRealm" class="com.liyang.webadmin.shiro.ShiroRealm"> </bean>  
        

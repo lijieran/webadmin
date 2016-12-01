@@ -9,6 +9,7 @@ public class Menu {
 	private int sort; 	// 排序
 	private String isShow; 	// 是否在菜单中显示（1：显示；0：不显示）
 	private String permission; // 权限标识
+	private String icon;       //图标
 	
 	public String getId() {
 		return id;
@@ -51,6 +52,12 @@ public class Menu {
 	}
 	public void setPermission(String permission) {
 		this.permission = permission;
+	}
+	public String getIcon() {
+		return icon;
+	}
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 	
 	

@@ -40,7 +40,7 @@
 	</settings>
 	<!-- 插件配置 -->
 	<plugins>
-		<plugin interceptor="com.liyang.webadmin.mybatis.plugins.PageInterceptor" />
+		<plugin interceptor="com.liyang.module.mybatis.plugins.PageInterceptor" />
     </plugins>
 
 </configuration>

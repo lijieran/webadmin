@@ -20,7 +20,7 @@
 	<context:property-placeholder location="classpath:jdbc.properties"  ignore-unresolvable="true"/>
 
  	<!-- MyBatis begin -->
-    <bean id="sqlSessionFactory" class="com.liyang.webadmin.mybatis.PackagesSqlSessionFactoryBean">
+    <bean id="sqlSessionFactory" class="com.liyang.module.mybatis.PackagesSqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="typeAliasesPackage" value="com.liyang.**.entity"/>
         <property name="mapperLocations" value="classpath:/mapper/*.xml"/>

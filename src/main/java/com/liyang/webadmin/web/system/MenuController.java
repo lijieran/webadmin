@@ -80,7 +80,7 @@ public class MenuController {
 	
 	private String saveOrUpdate(Menu entity, Model model, HttpServletRequest request, String type) {
 		try {
-			if(entity.getId()==null || entity.getName()==null) {
+			if( entity.getName()==null) {
 				model.addAttribute("error", "非法请求");
 				logger.info("菜单添加非法请求");
 				if(type.equals("add")) return "system/menuAdd";

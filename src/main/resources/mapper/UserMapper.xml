@@ -20,6 +20,13 @@
 	</select>
 	
 	
+	<!-- 查询所有用户角色 -->
+	<select id="findRoles" resultType="string" >
+		SELECT
+			role_id
+		FROM t_user_role a where user_id=#{0}
+	</select>
+	
 	<!-- 保存用户 -->
 	<insert id="save">
 	    insert into t_user (id, name, username, password) values(#{id}, #{name}, #{username}, #{password} )

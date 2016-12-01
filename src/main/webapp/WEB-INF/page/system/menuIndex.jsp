@@ -82,7 +82,8 @@
 								        <th data-field="name">菜单名称</th>
 								         <th data-field="href">链接</th>
 								         <th data-field="sort">排序</th>
-								        <th data-field="isShow">是否显示</th>
+								         <th data-field="icon">图标</th>
+								        <th data-field="isShow" data-formatter='showFormatter'>是否显示</th>
 								        <shiro:hasPermission name="system:menu:edit">
 								              <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents">操作</th>    
 								        </shiro:hasPermission>		     		        
@@ -112,6 +113,11 @@
 			  	$("#menuAdd-button").click(function(){
 					window.location.href = "${ctx}/menu/menuAdd";
 				});
+			  	
+			  	function showFormatter(value) {
+			  	   if(value=="0") return "否";
+			  	   if(value=="1") return "是";
+			  	}
 			  	
 			  	function actionFormatter(value, row, index) {
 			  	    return [
