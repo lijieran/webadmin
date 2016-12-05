@@ -78,7 +78,7 @@
 
 						<!-- Form -->
 						<form class="form-horizontal margin-none" id="validateSubmitForm"
-							method="get" autocomplete="off" action="${ctx }/user/save">
+							method="post" autocomplete="off" action="${ctx }/user/save">
 
 							     <div class="control-group">
 									<label class="control-label" for="id">用户ID</label>
@@ -129,7 +129,7 @@
 											    
 											    <c:forEach items="${roles }" var="entity">
 											       <label class="checked-label">
-														<input name="roles" type="checkbox"  value="${entity.id }"/>
+														<input name="roles" type="checkbox"  value="${entity.value }"/>
 														<span class="lbl">${entity.name }</span>
 												   </label>
 											    </c:forEach>

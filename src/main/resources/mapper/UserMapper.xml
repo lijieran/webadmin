@@ -12,6 +12,17 @@
 		WHERE a.username = #{0}
 	</select>
 	
+	<!-- 根据登录名查询用户 -->
+	<select id="findById" resultType="user" >
+		SELECT
+			*
+		FROM t_user a
+		
+		WHERE a.id = #{0}
+	</select>
+	
+	
+	
 	<!-- 查询所有用户 -->
 	<select id="findUsers" resultType="user" >
 		SELECT
@@ -31,6 +42,19 @@
 	<insert id="save">
 	    insert into t_user (id, name, username, password) values(#{id}, #{name}, #{username}, #{password} )
 	</insert>
+	
+	<!-- 保存用户角色 -->
+	<insert id="saveUserRole">
+	    insert into t_user_role (user_id, role_id) values(#{0}, #{1})
+	</insert>
+	
+	<delete id="clearUserRole">
+	    delete from t_user_role where user_id=#{0}
+	</delete>
+	
+	<update id="update">
+	    update t_user set name=#{name} where id=#{id}
+	</update>
 
 	
 </mapper>

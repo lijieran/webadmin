@@ -1,9 +1,7 @@
 package com.liyang.webadmin.service.impl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -14,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.Gson;
 import com.liyang.module.authc.CheckboxEntity;
-import com.liyang.webadmin.entity.Constant;
 import com.liyang.webadmin.entity.Menu;
 import com.liyang.webadmin.entity.Role;
 import com.liyang.webadmin.entity.User;
@@ -24,7 +21,6 @@ import com.liyang.webadmin.persistence.mapper.UserMapper;
 import com.liyang.webadmin.service.SystemService;
 
 @Service
-@SuppressWarnings({ "rawtypes", "unchecked" })
 public class SystemServiceImpl implements SystemService{
 	
 	private static Logger logger = Logger.getLogger(SystemServiceImpl.class);
@@ -51,9 +47,26 @@ public class SystemServiceImpl implements SystemService{
 		return true;
 	}
 
+	@Transactional
 	public void saveUser(User user) {
-		user.setPassword(DigestUtils.md5Hex(user.getPassword()));
-		userMapper.save(user);
+		try {
+			user.setPassword(DigestUtils.md5Hex(user.getPassword()));
+			userMapper.save(user);
+			
+			//保存角色信息
+			
+			if(user.getRoles()!=null) {
+				String[] roles = user.getRoles().split(",");
+				for(String roleid:roles) {
+					userMapper.saveUserRole(user.getId(), roleid);
+				}
+			}
+			
+			
+			
+		} catch (Exception e) {
+			logger.error(e,e);
+		}
 		
 	}
 
@@ -86,7 +99,7 @@ public class SystemServiceImpl implements SystemService{
 	}
 	
 	
-	private List findChildrenMenus(String id) {
+/*	private List findChildrenMenus(String id) {
 		List list = new ArrayList();
 		try {
 			
@@ -106,7 +119,7 @@ public class SystemServiceImpl implements SystemService{
 			logger.error(e,e);
 		}
 		return list;
-	}
+	}*/
 
 	public Menu findMenuById(String id) {
 		return menuMapper.findById(id);
@@ -117,96 +130,9 @@ public class SystemServiceImpl implements SystemService{
 		
 	}
 
-	public String generateSidebar(String uri) {
-		List<Menu> menus = menuMapper.findChildren(Constant.MENU_ROOT_ID);
-		
-		StringBuffer buffer = new StringBuffer();
-		
-		
-		for(Menu entity:menus) {
-			this.formatSidebar(entity, buffer, uri);
-						
-		}
-		return buffer.toString();
-	}
+	
 
-	private void formatSidebar(Menu entity, StringBuffer buffer, String uri) {
-		try {
-			
-			if(entity.getIsShow().equals("0")) return;
-			
-			if(uri.contains("Update") || uri.contains("Add")) {
-				String tmp = uri.substring(uri.lastIndexOf("/"));
-				uri = uri.replace(tmp, "/index");
-			}
-			
-			List<Menu> children = menuMapper.findDisplayChildren(entity.getId());
-			
-			String titleTag = "<li>";
-			String icon = entity.getIcon();
-			if(icon==null) icon="icon-desktop";
-			
-			if(children.size()==0) {
-				
-				//如果是单个菜单的情况
-				if(uri.equalsIgnoreCase(entity.getHref())) titleTag = "<li class=\"active\">";
-				
-				buffer.append(titleTag);
-				  buffer.append("<a href=\"##ROOT##"+entity.getHref()+"\">");
-				    buffer.append("<i class=\""+icon+"\"></i>");
-				    buffer.append("<span class=\"menu-text\"> "+entity.getName()+" </span>");
-				  buffer.append("</a>");
-				buffer.append("</li>");
-				
-			} else {
-				
-				boolean active = this.validateActive(children, uri);
-				
-				  if(active) buffer.append("<li class=\"active open\">");
-				  else buffer.append("<li>");
-				  
-				  buffer.append("<a href=\"#\" class=\"dropdown-toggle\">");
-				  buffer.append("<i class=\""+icon+"\"></i>");
-				  buffer.append("<span class=\"menu-text\"> "+entity.getName()+" </span>");
-				  buffer.append("<b class=\"arrow icon-angle-down\"></b>");
-				  buffer.append("</a>");
-				  
-				  buffer.append("<ul class=\"submenu\">");
-				  
-				  for(Menu child:children) {
-					  
-					  if(uri.equals(child.getHref())) {
-						  titleTag = "<li class=\"active\">";
-					  } else {
-						  titleTag = "<li>";
-					  }
-					  
-					  buffer.append(titleTag);
-					  buffer.append("<a href=\"##ROOT##"+child.getHref()+"\">");
-					  buffer.append("<i class=\"icon-double-angle-right\"></i>");
-					  buffer.append(child.getName());
-					  buffer.append("</a>");
-					  buffer.append("</li>");
-				  }
-				  
-				  buffer.append("</ul>");
-				buffer.append("</li>");
-				
-				
-			}
-
-		} catch (Exception e) {
-			logger.error(e,e);
-		}
-		
-	}
-
-	private boolean validateActive(List<Menu> children, String uri) {
-		for(Menu entity:children) {
-			if(uri.equals(entity.getHref())) return true;
-		}
-		return false;
-	}
+	
 
 
 
@@ -310,6 +236,36 @@ public class SystemServiceImpl implements SystemService{
 			logger.error(e,e);
 		}
 		return result;
+	}
+
+	@Transactional
+	public void updateUser(User entity) {
+		try {
+			userMapper.update(entity);
+			userMapper.clearUserRole(entity.getId());
+			
+			//保存角色信息
+			
+			if(entity.getRoles()!=null) {
+				String[] roles = entity.getRoles().split(",");
+				for(String roleid:roles) {
+					userMapper.saveUserRole(entity.getId(), roleid);
+				}
+			}
+			
+		} catch (Exception e) {
+			logger.error(e,e);
+		}
+		
+	}
+
+	public User findUserById(String id) {
+		try {
+			return userMapper.findById(id);
+		} catch (Exception e) {
+			logger.error(e,e);
+		}
+		return null;
 	}
 
 

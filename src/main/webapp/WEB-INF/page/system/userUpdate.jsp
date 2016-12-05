@@ -78,20 +78,20 @@
 
 						<!-- Form -->
 						<form class="form-horizontal margin-none" id="validateSubmitForm"
-							method="get" autocomplete="off" action="${ctx }/user/save">
+							method="post" autocomplete="off" action="${ctx }/user/update">
 
 							     <div class="control-group">
 									<label class="control-label" for="id">用户ID</label>
 
 									<div class="controls">
-										<input type="text" id="id" name="id" />
+										<input type="text" id="id" name="id"  value="${entity.id }"  readonly=true/>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label" for="username">账号</label>
 
 									<div class="controls">
-										<input type="text" id="username" name="username" />
+										<input type="text" id="username" name="username"  value="${entity.username }" readonly=true/>
 									</div>
 								</div>
 								
@@ -99,26 +99,10 @@
 									<label class="control-label" for="name">姓名</label>
 
 									<div class="controls">
-										<input type="text" id="name" name="name" />
+										<input type="text" id="name" name="name"  value="${entity.name }"/>
 									</div>
 								</div>
 								
-								<div class="control-group">
-									<label class="control-label" for="password">密码</label>
-
-									<div class="controls">
-										<input type="password" id="password" name="password" />
-									</div>
-								</div>
-								
-								<div class="control-group">
-									<label class="control-label" for="confirm_password">确认密码</label>
-
-									<div class="controls">
-										<input type="password" id="confirm_password" name="confirm_password" />
-									</div>
-								</div>
-																		
 				
 
 							
@@ -129,7 +113,7 @@
 											    
 											    <c:forEach items="${roles }" var="entity">
 											       <label class="checked-label">
-														<input name="roles" type="checkbox"  value="${entity.id }"/>
+														<input name="roles" type="checkbox"  value="${entity.value }"  <c:if test="${entity.checked }">checked</c:if> />
 														<span class="lbl">${entity.name }</span>
 												   </label>
 											    </c:forEach>
@@ -199,6 +183,5 @@
 	<script
 		src="${ctxStatic}/common/theme/scripts/plugins/forms/jquery-validation/dist/jquery.validate.min.js"></script>
 	<!-- Form Validator Page Demo Script -->
-	<script src="${ctxStatic}/webadmin/js/userAdd.js"></script>
 </body>
 </html>

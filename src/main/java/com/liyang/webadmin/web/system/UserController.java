@@ -60,26 +60,51 @@ public class UserController {
 		String id = request.getParameter("id");
 		List<CheckboxEntity> roles = systemService.findCheckboxRole(id);
 		model.addAttribute("roles", roles);
+		
+		User entity = systemService.findUserById(id);
+		model.addAttribute("entity", entity);
 		return "system/userUpdate";
 	}
 	
 	
 	
 	@RequestMapping(value = {"save"})
-	public String save(User user, Model model) {
+	public String save(User entity, Model model) {
 		
-		logger.info("用户信息：" + user.getUsername());
-		
-		
-		 if(user.getId()==null || user.getName()==null || user.getPassword()==null) {
+		 if(entity.getId()==null || entity.getName()==null || entity.getPassword()==null) {
 			 model.addAttribute("error", "非法请求");
 			 return "system/userAdd";
 		 }
 		
-	    systemService.saveUser(user);
-	    
-	   
+	    return this.saveOrUpdate(entity, model, "add");
+	}
+	
+
+	@RequestMapping(value = {"update"})
+	public String update(User entity, Model model) {
 		
+	    return this.saveOrUpdate(entity, model, "update");
+	}
+	
+	private String saveOrUpdate(User entity, Model model,String type) {
+		try {
+			if(entity.getId()==null) {
+				model.addAttribute("error", "用户非法请求");
+				logger.info("用户添加非法请求");
+				if(type.equals("add")) return "system/userAdd";
+				if(type.equals("update")) return "system/userUpdate";
+			}
+			
+			
+	
+			logger.info("角色信息：" + entity.getName() );
+			
+			if(type.equals("add")) systemService.saveUser(entity);
+			if(type.equals("update")) systemService.updateUser(entity);
+		   
+		} catch (Exception e) {
+			logger.error(e,e);
+		}
 		return "redirect:"  + "/user/index";
 	}
 	

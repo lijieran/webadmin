@@ -83,6 +83,7 @@
 								         <th data-field="href">链接</th>
 								         <th data-field="sort">排序</th>
 								         <th data-field="icon">图标</th>
+								          <th data-field="permission">权限</th>
 								        <th data-field="isShow" data-formatter='showFormatter'>是否显示</th>
 								        <shiro:hasPermission name="system:menu:edit">
 								              <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents">操作</th>    

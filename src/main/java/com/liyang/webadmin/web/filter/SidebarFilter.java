@@ -14,19 +14,17 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.web.filter.GenericFilterBean;
 
 import com.liyang.module.spring.SpringContextHolder;
-import com.liyang.webadmin.service.SystemService;
+import com.liyang.webadmin.web.sidebar.SidebarFactory;
 
 public class SidebarFilter extends GenericFilterBean{
 	
 	private static Logger logger = Logger.getLogger(SidebarFilter.class);
 
-
-	private SystemService systemService;
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest re = (HttpServletRequest) request;
-		systemService = SpringContextHolder.getBean(SystemService.class);
+		SidebarFactory sidebarFactory = SpringContextHolder.getBean(SidebarFactory.class);
 		String root = re.getContextPath();
 		String uri = re.getRequestURI();
 		uri = uri.replace(root, "");
@@ -35,7 +33,7 @@ public class SidebarFilter extends GenericFilterBean{
 		
 		//logger.info(root);
 		
-		String sidebar = systemService.generateSidebar(uri);
+		String sidebar = sidebarFactory.generateSidebar(uri);
 		
 		
 		sidebar = sidebar.replace("##ROOT##", root);

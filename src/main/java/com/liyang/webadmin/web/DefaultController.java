@@ -4,6 +4,7 @@ package com.liyang.webadmin.web;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +37,7 @@ public class DefaultController {
 	}
 
 	@RequestMapping({"home",""})
+	@RequiresPermissions("home:view")
 	public String home(HttpServletRequest request) {
 		System.out.println("=====");
 		        

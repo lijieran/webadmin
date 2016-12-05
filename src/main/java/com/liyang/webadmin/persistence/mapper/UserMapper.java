@@ -8,10 +8,18 @@ public interface UserMapper {
 	
 	User findByUsername(String username);
 	
+	User findById(String id);
+	
 	List<User> findUsers();
 	
 	void save(User user);
 	
 	List<String> findRoles(String id);
+	
+	void saveUserRole(String userid, String roleid);
+	
+	void clearUserRole(String userid);
+	
+	void update(User user);
 
 }
