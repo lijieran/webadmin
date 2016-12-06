@@ -23,6 +23,12 @@
 	     id=#{0}
 	</delete>
 	
+	<delete id="clearRoleMenu">
+	     delete from t_role_menu
+	     where 
+	     menu_id=#{0}
+	</delete>
+	
 	
 	<select id="findChildren" resultType="menu" >
 		SELECT
@@ -44,6 +50,11 @@
 		SELECT
 			*
 		FROM t_menu a where id=#{0}
+	</select>
+	
+	<select id="findByUsername" resultType="menu" >
+select a.* from t_menu a LEFT JOIN t_menu b on b.id=a.parent_id JOIN t_role_menu c on c.menu_id=a.id JOIN t_role d on d.id=c.role_id JOIN t_user_role e ON
+e.role_id = d.id JOIN t_user f on f.id=e.user_id and f.username=#{0}
 	</select>
 	
 	

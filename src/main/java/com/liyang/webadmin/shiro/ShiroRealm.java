@@ -1,5 +1,7 @@
 package com.liyang.webadmin.shiro;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -13,6 +15,8 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
+import com.liyang.module.lunar.StringUtil;
+import com.liyang.webadmin.entity.Menu;
 import com.liyang.webadmin.entity.User;
 import com.liyang.webadmin.service.AuthenticationService;
 
@@ -29,13 +33,28 @@ public class ShiroRealm extends AuthorizingRealm{
 	 * 授权查询回调函数, 进行鉴权但缓存中无用户的授权信息时调用
 	 */
 	@Override
-	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principal) {
+	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		// TODO Auto-generated method stub
 		System.out.println("2222");
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		
+		try {
+			String principal = (String)getAvailablePrincipal(principals);
+			
+			if (principal != null) { 
+				System.out.println(principal);
+				List<Menu> menus = authenticationService.findByUser(principal);
+				
+				for(Menu menu:menus) {
+					if(!StringUtil.isNULL(menu.getPermission())) info.addStringPermission(menu.getPermission());
+				}
+			}
+			
+		} catch (Exception e) {
+			logger.error(e,e);
+		}
 		info.addRole("Captains");
-		info.addStringPermission("system:menu:edit");
+		
 		
 		info.addStringPermission("system:menu:view");
 		return info;

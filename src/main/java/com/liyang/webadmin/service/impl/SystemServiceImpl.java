@@ -93,8 +93,14 @@ public class SystemServiceImpl implements SystemService{
 		}
 	}
 
+	@Transactional
 	public void deleteMenu(String id) {
-		menuMapper.delete(id);
+		try {
+			menuMapper.clearRoleMenu(id);
+			menuMapper.delete(id);
+		} catch (Exception e) {
+			logger.error(e,e);
+		}
 		
 	}
 	
@@ -266,6 +272,18 @@ public class SystemServiceImpl implements SystemService{
 			logger.error(e,e);
 		}
 		return null;
+	}
+
+	@Transactional
+	public void deleteUser(String id) {
+		try {
+			userMapper.clearUserRole(id);
+			userMapper.delete(id);
+			
+		} catch (Exception e) {
+			logger.error(e,e);
+		}
+		
 	}
 
 

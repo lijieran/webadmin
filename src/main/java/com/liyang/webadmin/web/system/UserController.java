@@ -123,6 +123,14 @@ public class UserController {
 		} 
 		return "true";
 	}
+	
+	@RequestMapping(value = {"delete"})
+	public String delete(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		logger.info("用户删除===="+id);
+		systemService.deleteUser(id);
+		return "redirect:"  + "/user/index";
+	}
 
 	
 	

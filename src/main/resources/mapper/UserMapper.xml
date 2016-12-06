@@ -52,6 +52,10 @@
 	    delete from t_user_role where user_id=#{0}
 	</delete>
 	
+	<delete id="delete">
+	    delete from t_user where id=#{0}
+	</delete>
+	
 	<update id="update">
 	    update t_user set name=#{name} where id=#{id}
 	</update>

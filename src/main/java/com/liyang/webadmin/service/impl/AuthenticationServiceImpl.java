@@ -123,4 +123,13 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 		return list;
 	}
 
+	public List<Menu> findByUser(String userid) {
+		try {
+			return menuMapper.findByUsername(userid);
+		} catch (Exception e) {
+			logger.error(e,e);
+		}
+		return null;
+	}
+
 }

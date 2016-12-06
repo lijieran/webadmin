@@ -16,6 +16,7 @@ public interface SystemService {
 	public void saveUser(User entity);
 	public void updateUser(User entity);
 	public User findUserById(String id);
+	public void deleteUser(String id);
 	
 	public String findMenus();
 	public void saveMenu(Menu entity);

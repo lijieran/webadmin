@@ -22,4 +22,6 @@ public interface UserMapper {
 	
 	void update(User user);
 
+	
+	void delete(String id);
 }

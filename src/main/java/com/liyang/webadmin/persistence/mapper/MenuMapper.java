@@ -12,6 +12,7 @@ public interface MenuMapper {
 	void save(Menu entity);
 	
 	void delete(String id);
+	void clearRoleMenu(String menuid);
 	
 	
 	List<Menu> findChildren(String id);
@@ -25,5 +26,7 @@ public interface MenuMapper {
 	List<ZtreeEntity> findZtreeEntity();
 	
 	String findMaxId(String id);
+	
+	List<Menu> findByUsername(String username);
 
 }

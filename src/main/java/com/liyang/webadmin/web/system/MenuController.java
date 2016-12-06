@@ -27,7 +27,7 @@ public class MenuController {
 	@Resource
 	private AuthenticationService authenticationService;
 	
-	@RequiresPermissions("system:menu:view")
+	@RequiresPermissions("system:menu:index")
 	@RequestMapping(value = {"index"})
 	public String index() {
 		logger.info("===========");
@@ -107,10 +107,17 @@ public class MenuController {
 	
 	@RequestMapping(value = {"delete"})
 	public String delete(HttpServletRequest request) {
-		String id = request.getParameter("id");
-		logger.info("menu==delete===="+id);
-		systemService.deleteMenu(id);
+		try {
+			String id = request.getParameter("id");
+			logger.info("menu==delete===="+id);
+			systemService.deleteMenu(id);
+			
+		} catch (Exception e) {
+			logger.error(e,e);
+		}
+		
 		return "redirect:"  + "/menu/index";
+
 	}
 
 }

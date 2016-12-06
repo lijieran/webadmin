@@ -35,7 +35,7 @@
 				
 				    ${sidebar }
 				
-					<li>
+					<!-- <li>
 						<a href="index.html">
 							<i class="icon-dashboard"></i>
 							<span class="menu-text"> Dashboard </span>
@@ -227,7 +227,7 @@
 								</a>
 							</li>
 						</ul>
-					</li>
+					</li> -->
 
 				<%-- 	<li class="active open">
 						<a href="#" class="dropdown-toggle">
