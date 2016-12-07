@@ -27,7 +27,7 @@ public class MenuController {
 	@Resource
 	private AuthenticationService authenticationService;
 	
-	@RequiresPermissions("system:menu:index")
+	@RequiresPermissions("menu:index")
 	@RequestMapping(value = {"index"})
 	public String index() {
 		logger.info("===========");

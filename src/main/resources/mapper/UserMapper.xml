@@ -7,7 +7,7 @@
 	<select id="findByUsername" resultType="user" >
 		SELECT
 			*
-		FROM t_user a
+		FROM T_USER a
 		
 		WHERE a.username = #{0}
 	</select>
@@ -16,7 +16,7 @@
 	<select id="findById" resultType="user" >
 		SELECT
 			*
-		FROM t_user a
+		FROM T_USER a
 		
 		WHERE a.id = #{0}
 	</select>
@@ -27,7 +27,7 @@
 	<select id="findUsers" resultType="user" >
 		SELECT
 			*
-		FROM t_user a
+		FROM T_USER a
 	</select>
 	
 	
@@ -35,29 +35,29 @@
 	<select id="findRoles" resultType="string" >
 		SELECT
 			role_id
-		FROM t_user_role a where user_id=#{0}
+		FROM T_USER_ROLE a where user_id=#{0}
 	</select>
 	
 	<!-- 保存用户 -->
 	<insert id="save">
-	    insert into t_user (id, name, username, password) values(#{id}, #{name}, #{username}, #{password} )
+	    insert into T_USER (id, name, username, password) values(#{id}, #{name}, #{username}, #{password} )
 	</insert>
 	
 	<!-- 保存用户角色 -->
 	<insert id="saveUserRole">
-	    insert into t_user_role (user_id, role_id) values(#{0}, #{1})
+	    insert into T_USER_ROLE (user_id, role_id) values(#{0}, #{1})
 	</insert>
 	
 	<delete id="clearUserRole">
-	    delete from t_user_role where user_id=#{0}
+	    delete from T_USER_ROLE where user_id=#{0}
 	</delete>
 	
 	<delete id="delete">
-	    delete from t_user where id=#{0}
+	    delete from T_USER where id=#{0}
 	</delete>
 	
 	<update id="update">
-	    update t_user set name=#{name} where id=#{id}
+	    update T_USER set name=#{name} where id=#{id}
 	</update>
 
 	

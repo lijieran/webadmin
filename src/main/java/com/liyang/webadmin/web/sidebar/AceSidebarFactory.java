@@ -37,10 +37,10 @@ public class AceSidebarFactory implements SidebarFactory{
 			
 			if(entity.getIsShow().equals("0")) return;
 			
-			if(uri.contains("Update") || uri.contains("Add")) {
+			/*if(uri.contains("Update") || uri.contains("Add")) {
 				String tmp = uri.substring(uri.lastIndexOf("/"));
 				uri = uri.replace(tmp, "/index");
-			}
+			}*/
 			
 			List<Menu> children = menuMapper.findDisplayChildren(entity.getId());
 			
@@ -62,7 +62,7 @@ public class AceSidebarFactory implements SidebarFactory{
 				
 			} else {
 				
-				boolean active = this.validateActive(children, uri);
+				boolean active = this.validateActive(menuMapper.findAllChildren(entity.getId()), uri);
 				
 				  if(active) buffer.append("<li class=\"active open\">");
 				  else buffer.append("<li>");
@@ -105,6 +105,7 @@ public class AceSidebarFactory implements SidebarFactory{
 	
 	private boolean validateActive(List<Menu> children, String uri) {
 		for(Menu entity:children) {
+			if(entity==null) continue;
 			if(uri.equals(entity.getHref())) return true;
 		}
 		return false;

@@ -1,13 +1,5 @@
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
-/* Drop Indexes */
-
-DROP INDEX sys_area_parent_id ON T_DEPARTMENT;
-DROP INDEX sys_area_parent_ids ON T_DEPARTMENT;
-DROP INDEX sys_area_del_flag ON T_DEPARTMENT;
-
-
-
 /* Drop Tables */
 
 DROP TABLE IF EXISTS T_SCHEDULING_PERSONNEL;
@@ -57,7 +49,7 @@ CREATE TABLE T_DEPARTMENT
 CREATE TABLE T_PERSONNEL
 (
 	-- 编号
-	id int NOT NULL COMMENT '编号',
+	id int NOT NULL AUTO_INCREMENT COMMENT '编号',
 	-- 部门编编号
 	department_id int NOT NULL COMMENT '部门编编号',
 	-- 姓名
@@ -78,7 +70,8 @@ CREATE TABLE T_PERSONNEL
 	remarks varchar(255) COMMENT '备注信息',
 	-- 删除标记（0：正常；1：删除）
 	del_flag char(1) DEFAULT '0' NOT NULL COMMENT '删除标记（0：正常；1：删除）',
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	UNIQUE (id)
 ) COMMENT = '排班人员表';
 
 
@@ -86,7 +79,7 @@ CREATE TABLE T_PERSONNEL
 CREATE TABLE T_POST
 (
 	-- 编号
-	id int NOT NULL COMMENT '编号',
+	id int NOT NULL AUTO_INCREMENT COMMENT '编号',
 	-- 部门编号
 	department_id int NOT NULL COMMENT '部门编号',
 	-- 名称
@@ -108,6 +101,7 @@ CREATE TABLE T_POST
 	-- 删除标记（0：正常；1：删除）
 	del_flag char(1) DEFAULT '0' NOT NULL COMMENT '删除标记（0：正常；1：删除）',
 	PRIMARY KEY (id),
+	UNIQUE (id),
 	UNIQUE (department_id, name)
 ) COMMENT = '岗位表';
 
@@ -116,7 +110,7 @@ CREATE TABLE T_POST
 CREATE TABLE T_SCHEDULING
 (
 	-- 编号
-	id int NOT NULL COMMENT '编号',
+	id int NOT NULL AUTO_INCREMENT COMMENT '编号',
 	-- 班次编号
 	shift_id int NOT NULL COMMENT '班次编号',
 	-- 日期
@@ -136,6 +130,7 @@ CREATE TABLE T_SCHEDULING
 	-- 删除标记（0：正常；1：删除）
 	del_flag char(1) DEFAULT '0' NOT NULL COMMENT '删除标记（0：正常；1：删除）',
 	PRIMARY KEY (id),
+	UNIQUE (id),
 	UNIQUE (shift_id, ddatetime)
 ) COMMENT = '排班明细表';
 
@@ -154,7 +149,7 @@ CREATE TABLE T_SCHEDULING_PERSONNEL
 CREATE TABLE T_SHIFT
 (
 	-- 编号
-	id int NOT NULL COMMENT '编号',
+	id int NOT NULL AUTO_INCREMENT COMMENT '编号',
 	-- 名称
 	name varchar(100) NOT NULL COMMENT '名称',
 	-- 班次代码
@@ -189,7 +184,8 @@ CREATE TABLE T_SHIFT
 	remarks varchar(255) COMMENT '备注信息',
 	-- 删除标记（0：正常；1：删除）
 	del_flag char(1) DEFAULT '0' NOT NULL COMMENT '删除标记（0：正常；1：删除）',
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	UNIQUE (id)
 ) COMMENT = '班次表';
 
 
@@ -234,14 +230,6 @@ ALTER TABLE T_SCHEDULING
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
-
-
-
-/* Create Indexes */
-
-CREATE INDEX sys_area_parent_id ON T_DEPARTMENT ();
-CREATE INDEX sys_area_parent_ids ON T_DEPARTMENT ();
-CREATE INDEX sys_area_del_flag ON T_DEPARTMENT ();
 
 
 

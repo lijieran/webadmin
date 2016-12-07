@@ -66,5 +66,9 @@
 			   display:inline;
 			   margin-right: 5px;
 			}
-	</style>
+	 </style>
+	 
+	 <<script type="text/javascript">
+             var ctx = "${ctx}";
+     </script>
 	    

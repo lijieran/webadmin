@@ -48,6 +48,7 @@ public class SidebarFilter extends GenericFilterBean{
 		if (principal != null) {
 			System.out.println(principal);
 			request.setAttribute("username", principal);
+			
 		}
 		
 		chain.doFilter(request, response);

@@ -37,7 +37,7 @@ public class DefaultController {
 	}
 
 	@RequestMapping({"home",""})
-	@RequiresPermissions("home:view")
+	@RequiresPermissions("home")
 	public String home(HttpServletRequest request) {
 		System.out.println("=====");
 		        

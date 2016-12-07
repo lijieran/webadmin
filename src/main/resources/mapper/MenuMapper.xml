@@ -7,24 +7,24 @@
 	<select id="findMenus" resultType="menu" >
 		SELECT
 			*
-		FROM t_menu a
+		FROM T_MENU a
 	</select>
 	
 	<insert id="save">
-	    insert into t_menu 
+	    insert into T_MENU 
 	    (id, sort, parent_id, name, href, is_show, permission, icon)
 	    values
 	    (#{id}, #{sort}, #{parentId}, #{name}, #{href}, #{isShow}, #{permission}, #{icon})
 	</insert>
 	
 	<delete id="delete">
-	     delete from t_menu
+	     delete from T_MENU
 	     where 
 	     id=#{0}
 	</delete>
 	
 	<delete id="clearRoleMenu">
-	     delete from t_role_menu
+	     delete from T_ROLE_MENU
 	     where 
 	     menu_id=#{0}
 	</delete>
@@ -33,33 +33,41 @@
 	<select id="findChildren" resultType="menu" >
 		SELECT
 			*
-		FROM t_menu a where parent_id=#{0} order by sort
+		FROM T_MENU a where parent_id=#{0} order by sort
+	</select>
+	
+	<select id="findAllChildren" resultType="menu" >
+		(SELECT
+			a.*
+		FROM T_MENU a where a.parent_id=#{0} order by a.sort) UNION (SELECT
+			b.*
+		FROM T_MENU a LEFT JOIN T_MENU b on b.parent_id=a.id where a.parent_id=#{0} order by a.sort)
 	</select>
 	
 	<select id="findMaxId" resultType="string" >
-		select max(id) from t_menu where parent_id=#{0};
+		select max(id) from T_MENU where parent_id=#{0};
 	</select>
 	
 	<select id="findDisplayChildren" resultType="menu" >
 		SELECT
 			*
-		FROM t_menu a where parent_id=#{0} and is_show=1 order by sort
+		FROM T_MENU a where parent_id=#{0} and is_show=1 order by sort
 	</select>
 	
 	<select id="findById" resultType="menu" >
 		SELECT
 			*
-		FROM t_menu a where id=#{0}
+		FROM T_MENU a where id=#{0}
 	</select>
 	
 	<select id="findByUsername" resultType="menu" >
-select a.* from t_menu a LEFT JOIN t_menu b on b.id=a.parent_id JOIN t_role_menu c on c.menu_id=a.id JOIN t_role d on d.id=c.role_id JOIN t_user_role e ON
-e.role_id = d.id JOIN t_user f on f.id=e.user_id and f.username=#{0}
+select a.* from T_MENU a LEFT JOIN T_MENU b on b.id=a.parent_id JOIN T_ROLE_MENU c on c.menu_id=a.id JOIN T_ROLE d on d.id=c.role_id JOIN T_USER_ROLE e ON
+e.role_id = d.id JOIN T_USER f on f.id=e.user_id and f.username=#{0}
 	</select>
 	
 	
 	<update id="update">
-	    update t_menu set 
+	    update T_MENU set 
 		    sort = #{sort},
 		    parent_id = #{parentId},
 		    name = #{name},
@@ -73,7 +81,7 @@ e.role_id = d.id JOIN t_user f on f.id=e.user_id and f.username=#{0}
 <select id="findZtreeEntity" resultType="com.liyang.module.authc.ZtreeEntity" >
 		SELECT
 			name,parent_id pId, id  
-		FROM t_menu a
+		FROM T_MENU a
 	</select>
 	
 </mapper>

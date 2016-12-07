@@ -7,5 +7,11 @@ import com.liyang.business.scheduling.entity.Department;
 public interface DepartmentMapper {
 	
 	List<Department> findAll();
+	
+	void save(Department entity);
+	
+	Department findById(String id);
+	
+	void update(Department entity);
 
 }

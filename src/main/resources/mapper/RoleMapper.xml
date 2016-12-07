@@ -6,24 +6,24 @@
 	<select id="findAll" resultType="role" >
 		SELECT
 			*
-		FROM t_role a
+		FROM T_ROLE a
 	</select>
 	
 	<insert id="save">
-	    insert into t_role 
+	    insert into T_ROLE 
 	    (id,name)
 	    values
 	    (#{id}, #{name})
 	</insert>
 	
 	<delete id="delete">
-	     delete from t_role
+	     delete from T_ROLE
 	     where 
 	     id=#{0}
 	</delete>
 	
 	<update id="update">
-	    update t_role set 
+	    update T_ROLE set 
 		    name = #{name} 
 	    where id = #{id}
 	</update>
@@ -31,17 +31,17 @@
 	<select id="findById" resultType="role" >
 		SELECT
 			*
-		FROM t_role a where id=#{0}
+		FROM T_ROLE a where id=#{0}
 	</select>
 	
 	
 	<delete id="clearRoleMenu">
-	   delete from t_role_menu where role_id=#{0}
+	   delete from T_ROLE_MENU where role_id=#{0}
 	</delete>
 	
 	
 	<insert id="saveRoleMenu">
-	   insert t_role_menu 
+	   insert T_ROLE_MENU 
 	   (role_id, menu_id)
 	   values
 	   (#{0}, #{1})
@@ -50,7 +50,7 @@
 	<select id="findMenusByRole" resultType="string" >
 		SELECT
 			menu_id
-		FROM t_role_menu a where role_id=#{0}
+		FROM T_ROLE_MENU a where role_id=#{0}
 	</select>
 
 	

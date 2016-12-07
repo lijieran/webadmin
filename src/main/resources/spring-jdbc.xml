@@ -23,7 +23,7 @@
     <bean id="sqlSessionFactory" class="com.liyang.module.mybatis.PackagesSqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="typeAliasesPackage" value="com.liyang.**.entity"/>
-        <property name="mapperLocations" value="classpath:/mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath:/mapper/**/*.xml"/>
 		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
     </bean>
     

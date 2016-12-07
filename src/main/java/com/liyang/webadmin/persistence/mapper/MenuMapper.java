@@ -17,6 +17,8 @@ public interface MenuMapper {
 	
 	List<Menu> findChildren(String id);
 	
+	List<Menu> findAllChildren(String id);
+	
 	List<Menu> findDisplayChildren(String id);
 	
 	Menu findById(String id);
